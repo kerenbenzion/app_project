@@ -8,7 +8,9 @@ function add_product(req,req){
         price: '120',
         color :"black",
         preview_img: "",
-        hover_img: ""
+        hover_img: "",
+        description: "blaa",
+        size:"onesize",
     });
     product.save()
 }
