@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const app = express();
 const mongoose = require("mongoose");
+const env=require('dotenv').config();
 // mongoose.connect(process.env.DB_CONNECTION_STRING, { 
 //     useUnifiedTopology: true, 
 //     useNewUrlParser: true 
@@ -23,4 +24,4 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/', require('./routes/all_products'));
 
-app.listen('3001')
+app.listen(process.env.PORT)
