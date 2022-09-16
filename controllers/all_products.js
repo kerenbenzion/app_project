@@ -9,8 +9,8 @@ function add_product(req,req){
     const product = new Product({
         price: '125',
         color :"black",
-        preview_img: "",
-        hover_img: "",
+        preview_img: "https://shanijacobi.co.il/wp-content/uploads/2022/08/butterfly_earrings.jpg",
+        hover_img: "https://shanijacobi.co.il/wp-content/uploads/2022/08/35.jpg",
         description: "blaa",
         size:"onesize",
     });

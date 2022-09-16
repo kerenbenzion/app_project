@@ -19,12 +19,12 @@ const Product = new mongoose.Schema({
     required: true,
   },
   preview_img: {
-    data: Buffer,
-    contentType: String
+    type: String,
+    required: true,
   },
   hover_img: {
-    data: Buffer,
-    contentType: String
+    type: String,
+    required: true,
   },
   
 });
