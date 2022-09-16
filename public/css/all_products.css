@@ -54,7 +54,10 @@ body {
     position: relative;
     height: auto;
     margin: 0 auto;
+    margin-left: 0.5cm;
+    margin-right: 0.5cm;
     overflow: hidden;
     height: 10cm;
     width: 10rem;
+    float: right;
 }

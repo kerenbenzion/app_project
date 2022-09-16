@@ -3,12 +3,7 @@ const http = require('http');
 const app = express();
 const mongoose = require("mongoose");
 const env=require('dotenv').config();
-// mongoose.connect(process.env.DB_CONNECTION_STRING, { 
-//     useUnifiedTopology: true, 
-//     useNewUrlParser: true 
-// });
-
-mongoose.connect("mongodb+srv://bnk:bnkmongo@cluster0.vu2gbj5.mongodb.net/?retryWrites=true&w=majority", { 
+mongoose.connect(process.env.DB_CONNECTION_STRING, { 
     useUnifiedTopology: true, 
     useNewUrlParser: true 
 });
@@ -18,7 +13,6 @@ module.exports = app;
 app.set("view engine", "ejs");
 app.use('/public', express.static('public'));
 
-//app.use(express.static(__dirname + '/public/'));
 
 app.use(express.urlencoded({ extended: false }));  
 
