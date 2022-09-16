@@ -14,7 +14,8 @@ function add_product(req,res){
     var preview_img=req.body.preview_img;
     var hover_img=req.body.hover_img;
     var description=req.body.description;
-    var size=req.body.size
+    var size=req.body.size;
+    var type=req.body.type;
     if(size == null || description == null || hover_img==null ||preview_img == null || color==null||price==null||name==null){
         res.status(400).send("You did not enter all the needed parameters :( Please try again")
     }else {
@@ -24,6 +25,7 @@ function add_product(req,res){
             color:color,
             preview_img: preview_img,
             hover_img:hover_img,
+            type:type,
             description: description,
             size: size
         });
@@ -51,6 +53,9 @@ function deletebyname (req, res){
     .then(results => {
         Product.findByIdAndDelete(results.id).then(() => res.send('success')).catch(() => res.send('Failure'));
     });
+}
+function update(req, res){
+
 }
 module.exports={
     form,
