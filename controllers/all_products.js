@@ -5,17 +5,30 @@ function form(req,res){
     })
     
 }
-function add_product(req,req){
-    const product = new Product({
-        price: '125',
-        name: 'עגילי חישוק פרפר',
-        color :"black",
-        preview_img: "https://shanijacobi.co.il/wp-content/uploads/2022/08/butterfly_earrings.jpg",
-        hover_img: "https://shanijacobi.co.il/wp-content/uploads/2022/08/35.jpg",
-        description: "blaa",
-        size:"onesize",
-    });
-    product.save()
+
+function add_product(req,res){
+    console.log(req.body);
+    var name=req.body.name;
+    var price=req.body.price;
+    var color=req.body.color;
+    var preview_img=req.body.preview_img;
+    var hover_img=req.body.hover_img;
+    var description=req.body.description;
+    var size=req.body.size
+    if(size == null || description == null || hover_img==null ||preview_img == null || color==null||price==null||name==null){
+        res.status(400).send("You did not enter all the needed parameters :( Please try again")
+    }else {
+        const product = new Product({
+            price: price,
+            name: name,
+            color:color,
+            preview_img: preview_img,
+            hover_img:hover_img,
+            description: description,
+            size: size
+        });
+        product.save().then(res.status(200).send('success'))
+    }
 }
 function get_products(req, res){
     Product.find().then(results => {
