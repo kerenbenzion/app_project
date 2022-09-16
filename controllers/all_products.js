@@ -1,8 +1,19 @@
+const Product = require("../models/Product");
 function form(req,res){
     res.render('../views/all_products')
 
 }
+function add_product(req,req){
+    const product = new Product({
+        price: '120',
+        color :"black",
+        preview_img: "",
+        hover_img: ""
+    });
+    product.save()
+}
 
 module.exports={
-    form
+    form,
+    add_product
 }
