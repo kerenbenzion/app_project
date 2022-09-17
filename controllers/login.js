@@ -49,3 +49,13 @@ async function register(req,res){
     }
 
 }
+
+module.exports={
+    register,
+    login,
+    logout,
+    loginForm,
+    registerForm,
+    foo,
+    isLoggedIn
+}
