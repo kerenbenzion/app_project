@@ -1,3 +1,4 @@
+const { resetWatchers } = require("nodemon/lib/monitor/watch");
 const Product = require("../models/Product");
 function form(req,res){
     Product.find({}).then(results=>{
@@ -54,8 +55,38 @@ function deletebyname (req, res){
         Product.findByIdAndDelete(results.id).then(() => res.send('success')).catch(() => res.send('Failure'));
     });
 }
-function update(req, res){
+function updatebyname(req, res){
+    Product.findOne({
+        "name": req.params.name
+    })
+    .then(results => {
+        Product.findByIdAndUpdate(results.id,{"name":req.body.name,"price":req.body.price,"description":req.body.description,"color":req.body.color,"type":req.body.type,"size":req.body.size,"preview_img":req.body.preview_img,"hover_img":req.body.hover_img},
+        function(err,r){
+            if(err){
+                res.send(err);
+            } else {
+                res.send(r);
+            }
+        })
+    });
 
+
+
+    // Product.findOne({
+    //     "name": req.params.name
+    // })
+    // .then(results => {
+    //     Product.findById(results.id)
+    // }).then(product => {
+    //     if (product) {
+    //         product.size = req.body.size;
+    //         product.save();
+    //     } else
+    //         res.send('No results');
+    // })
+    // .catch(err => {
+    //     res.status(400).json("Error: " + err)
+    // });
 }
 module.exports={
     form,
@@ -63,4 +94,5 @@ module.exports={
     get_products,
     getByname,
     deletebyname,
+    updatebyname
 }
