@@ -1,6 +1,7 @@
 const express = require('express');
 const http = require('http');
 const app = express();
+const session = require('express-session')
 const mongoose = require("mongoose");
 const env=require('dotenv').config();
 mongoose.connect(process.env.DB_CONNECTION_STRING, { 
@@ -9,7 +10,11 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, {
 });
 module.exports = app;
 
-
+app.use(session({
+    secret: 'foo',
+    saveUninitialized: false,
+    resave: false
+}))
 app.set("view engine", "ejs");
 app.use('/public', express.static('public'));
 
@@ -17,5 +22,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));  
 
 app.use('/', require('./routes/all_products'));
+app.use('/', require('./routes/login'));
 
 app.listen(process.env.PORT)
