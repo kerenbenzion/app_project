@@ -6,7 +6,7 @@ router.get('/products', allproducts.form);
 router.post('/products/add_product',allproducts.add_product);
 router.get('/products/get_products',allproducts.get_products);
 router.get('/products/getByname/:name',allproducts.getByname);
-router.delete('/products/deletebyname/:name',allproducts.deletebyname);
+router.delete('/products/deleteproduct/:id',allproducts.deleteproduct);
 router.put('/products/updatebyname/:name',allproducts.updatebyname);
 
 module.exports = router;

@@ -6,7 +6,6 @@ function form(req,res){
     })
     
 }
-
 function add_product(req,res){
     console.log(req.body);
     var name=req.body.name;
@@ -47,13 +46,8 @@ function getByname (req, res){
     });
 }
 
-function deletebyname (req, res){
-    Product.findOne({
-        "name": req.params.name
-    })
-    .then(results => {
-        Product.findByIdAndDelete(results.id).then(() => res.send('success')).catch(() => res.send('Failure'));
-    });
+function deleteproduct (req, res){
+    Product.findByIdAndDelete(req.params.id).then(() => res.send('success')).catch(() => res.send('Failure'));
 }
 function updatebyname(req, res){
     Product.findOne({
@@ -75,6 +69,6 @@ module.exports={
     add_product,
     get_products,
     getByname,
-    deletebyname,
+    deleteproduct,
     updatebyname
 }
