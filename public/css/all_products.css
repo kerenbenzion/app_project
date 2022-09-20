@@ -36,6 +36,27 @@ body {
 	transform: translateY(0px);
 	opacity: 1;
 }
+#products .card:hover .delete  {
+	transform: translateY(0px);
+	opacity: 1;
+    display: block;
+    margin-left: auto;
+    margin-bottom: auto;
+    margin-right: 0;
+    margin-top: 0;
+    top:0;
+    right:0;
+    position: absolute;
+}
+#products .card .delete {
+	margin: 0 0px;
+	transform: translateY(0px);
+	transition: 0.5s;
+	opacity: 0;
+    border-radius: 50%;
+    border-color: transparent;
+    width: 1cm;
+}
 #products .card .sci {
 	margin: 0 10px;
 	transform: translateY(40px);
