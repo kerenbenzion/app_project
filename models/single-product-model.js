@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Product = new mongoose.Schema({
+const singleProduct = new mongoose.Schema({
     _id: { type: mongoose.ObjectId, auto: true },
     color: {
         type: [String],
@@ -33,4 +33,4 @@ const Product = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model("Product", Product);
+module.exports = mongoose.model("singleProduct", singleProduct);
