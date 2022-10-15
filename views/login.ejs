@@ -9,21 +9,19 @@
         
     </head>
 <body>
-    <form action="/login" method="post">
-    
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
-    
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-    
-        <button type="submit">Login</button>
-    
-        <div class="container" style="background-color:#f1f1f1">
-        <a href="register">Register</a>
-        <button type="button" class="cancelbtn">Cancel</button>
-
+    <h1>Login</h1>
+        <div class="content">
+            <div class="signup-form">
+                <form action="/login" method="post">
+                    <div class="username-section">
+                        <input type="username" name="username" placeholder="Username">
+                    </div>
+                    <div class="password-section">
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                    <input type="submit" class="submit-button">
+                </form>
+            </div>
         </div>
-    </form>
 </body>
 </html>
