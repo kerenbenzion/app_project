@@ -50,7 +50,7 @@ function deleteproduct (req, res){
     Product.findByIdAndDelete(req.params.id).then(() => res.send('success')).catch(() => res.send('Failure'));
 }
 function updateproduct(req, res){
-    Product.findByIdAndUpdate(results.id,{"name":req.body.name,"price":req.body.price,"description":req.body.description,"color":req.body.color,"type":req.body.type,"size":req.body.size,"preview_img":req.body.preview_img,"hover_img":req.body.hover_img},
+    Product.findByIdAndUpdate(req.params.id,req.body,
         function(err,r){
             if(err){
                 res.status(400).send(err);
