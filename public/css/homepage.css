@@ -104,3 +104,8 @@ body {
     margin-right: auto;
     display: block;
 }
+.font_branch{
+    font-family: "Noto Sans Hebrew";
+    color: black;
+    text-decoration: none;
+}
