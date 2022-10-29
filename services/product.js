@@ -5,4 +5,8 @@ async function getSingleProduct(id){
     return returnedSingleProduct = await SingleProduct.findById(id);
 }
 
-module.exports = {getSingleProduct};
+async function getAllProducts(){
+    return returnedProducts = await SingleProduct.find({});
+}
+
+module.exports = {getSingleProduct, getAllProducts};
