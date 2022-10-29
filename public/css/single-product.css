@@ -11,3 +11,8 @@
 .nav-link {
     color: black !important;
 }
+
+.carousel-item img{
+    width: 600px;
+    height: 600px;
+}

@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', require('./routes/all_products'));
 app.use('/', require('./routes/Order'));
 app.use('/', require('./routes/login'));
+app.use('/', require('./routes/single-product-router'));
 app.use('/', require('./routes/homepage'));
 
 app.listen(process.env.PORT)
