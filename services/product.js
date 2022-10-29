@@ -1,4 +1,4 @@
-const SingleProduct = require('../models/single-product-model');
+const SingleProduct = require('../models/Product');
 const mongoose = require('mongoose');
 
 async function getSingleProduct(id){
