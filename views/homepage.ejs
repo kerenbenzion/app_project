@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <link rel="stylesheet" href="../public/css/homepage.css" type="text/css">
+        <script src="../public/scripts/query_products.js"></script>
         
     </head>
     <body>
@@ -47,9 +48,9 @@
                     <li style="float: right;"><button class="btn btn-light"> עגילים </button></li>
                     <div class="dropdown-content">
                         <ul id="dropdownmenu">
-                            <li><button class="btn btn-light">כל העגילים  </button></li>
-                            <li><button class="btn btn-light">עגילי כסף </button></li>
-                            <li><button class="btn btn-light">עגילי זהב </button></li>
+                            <li><button class="btn btn-light" onclick="presentProductByCategory('earrings', 'all')">כל העגילים  </button></li>
+                            <li><button class="btn btn-light" onclick="presentProductByCategory('earrings', 'silver')">עגילי כסף </button></li>
+                            <li><button class="btn btn-light" onclick="presentProductByCategory('earrings', 'gold')">עגילי זהב </button></li>
                         </ul>
                     </div>
                 </div>
@@ -57,9 +58,10 @@
                     <li style="float: right;"><button class="btn btn-light"> שרשראות </button></li>
                     <div class="dropdown-content">
                         <ul id="dropdownmenu">
-                            <li><button class="btn btn-light">כל השרשראות  </button></li>
-                            <li><button class="btn btn-light">שרשראות כסף </button></li>
-                            <li><button class="btn btn-light">שרשראות זהב </button></li>
+                            <!-- <li><button href="#" class="btn btn-light" onclick="presentProductByCategory(this)" category="necklaces" >כל השרשראות  </button></li> -->
+                            <li><button class="btn btn-light" onclick="presentProductByCategory('necklaces', 'all')" >כל השרשראות  </button></li>
+                            <li><button class="btn btn-light" onclick="presentProductByCategory('necklaces', 'silver')">שרשראות כסף </button></li>
+                            <li><button class="btn btn-light" onclick="presentProductByCategory('necklaces', 'gold')">שרשראות זהב </button></li>
                         </ul>
                     </div>
                 </div>
@@ -67,9 +69,9 @@
                     <li style="float: right;"><button class="btn btn-light"> צמידים </button></li>
                     <div class="dropdown-content">
                         <ul id="dropdownmenu">
-                            <li><button class="btn btn-light">כל הצמידים  </button></li>
-                            <li><button class="btn btn-light"> צמידים כסף</button></li>
-                            <li><button class="btn btn-light"> צמידים זהב</button></li>
+                            <li><button class="btn btn-light" onclick="presentProductByCategory('bracelets', 'all')">כל הצמידים  </button></li>
+                            <li><button class="btn btn-light" onclick="presentProductByCategory('bracelets', 'silver')"> צמידים כסף</button></li>
+                            <li><button class="btn btn-light" onclick="presentProductByCategory('bracelets', 'gold')"> צמידים זהב</button></li>
                         </ul>
                     </div>
                 </div>
@@ -79,9 +81,9 @@
                 <li style="float: right;"><button class="btn btn-light"> טבעות </button></li>
                 <div class="dropdown-content">
                     <ul id="dropdownmenu">
-                        <li><button class="btn btn-light">כל הטבעות  </button></li>
-                        <li><button class="btn btn-light"> טבעות כסף</button></li>
-                        <li><button class="btn btn-light"> טבעות זהב</button></li>
+                        <li><button class="btn btn-light" onclick="presentProductByCategory('rings', 'all')">כל הטבעות  </button></li>
+                        <li><button class="btn btn-light" onclick="presentProductByCategory('rings', 'silver')"> טבעות כסף</button></li>
+                        <li><button class="btn btn-light" onclick="presentProductByCategory('rings', 'gold')"> טבעות זהב</button></li>
                     </ul>
                 </div>
             </div>
@@ -122,7 +124,7 @@
             <div class="p-2"> <a class="font_branch" href="products"> החנויות שלנו </a></div>
             <div class="p-2"><a class="font_branch"  href="products">♡ מחכות לך בסניפים</a></div>
         </div>
-        <div class="mcols bottom_footer">
+        <footer class="mcols bottom_footer">
             <h2>?למה לקנות אצלנו</h2>
            <li>
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
@@ -157,7 +159,7 @@
               </svg>
             מחירים נוחים
            </li>
-        </div>
+        </footer>
     </body>
     
 </html>
