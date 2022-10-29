@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Product = new mongoose.Schema({
   _id: { type: mongoose.ObjectId, auto: true},
   color: {
-    type: String,
+    type: [String],
     required: true,
   },
   type: {
@@ -19,7 +19,7 @@ const Product = new mongoose.Schema({
     required: true,
   },
   size: {
-    type: String,
+    type: [String],
     required: true,
   },
   description: {
