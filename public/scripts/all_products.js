@@ -15,10 +15,6 @@ function openForm(d) {
   for(var i = 0;i<all_popups.length;i++){
     all_popups[i].style.display="none"
   }
- 
-  // d.parentNode.parentNode.childNodes.forEach(function(item){
-  //   console.log(item.childNodes.className)
-  // });
   d.parentElement.getElementsByClassName("form-popup")[0].style.display = "block"
 
 }
@@ -54,4 +50,8 @@ function closeForm(d) {
   for(var i = 0;i<all_popups.length;i++){
     all_popups[i].style.display="none"
   }
+}
+function presentproduct(d){
+  var id =d.getAttribute("product_id")
+  window.location.href = "/single-product?id="+id;
 }

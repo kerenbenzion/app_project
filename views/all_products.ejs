@@ -85,7 +85,7 @@
                           <h5 class="card-title"><%=products[i].name%></h5>
                           <p class="card-text"><%=products[i].price%>₪</p>
                           <a href="#" class="choose btn btn-submit">בחרי אפשרויות</a>
-                          <a href="#" class="watch btn btn-submit">לתצוגה מהירה</a>
+                          <a href="#" class="watch btn btn-submit" onclick="presentproduct(this)" product_id="<%=products[i]._id%>">לתצוגה מהירה</a>
                         </div>
                         <div class="form-popup" id="myForm">
                             <form class="form-container">
