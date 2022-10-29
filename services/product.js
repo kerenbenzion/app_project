@@ -1,8 +1,12 @@
-const SingleProduct = require('../models/Product');
+const Product = require('../models/Product');
 const mongoose = require('mongoose');
 
 async function getSingleProduct(id){
-    return returnedSingleProduct = await SingleProduct.findById(id);
+    return returnedSingleProduct = await Product.findById(id);
 }
 
-module.exports = {getSingleProduct};
+async function getCategoryProducts(category){
+    return returnedProducts = await Product.find({type : category});
+}
+
+module.exports = {getSingleProduct, getCategoryProducts};

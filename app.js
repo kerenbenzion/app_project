@@ -26,5 +26,6 @@ app.use('/', require('./routes/Order'));
 app.use('/', require('./routes/login'));
 app.use('/', require('./routes/single-product-router'));
 app.use('/', require('./routes/homepage'));
+app.use('/', require('./routes/product-category-controller'));
 
 app.listen(process.env.PORT)
