@@ -30,7 +30,7 @@ function login(req,res){
     const result = loginService.login(username,password)
     if(result){
         req.session.username = username
-        res.redirect('/products')
+        res.redirect('/')
     }
     else{
         res.redirect('/login?error=1')
@@ -39,7 +39,6 @@ function login(req,res){
 function register(req,res){
     const {username, password} = req.body
     try{
-
         loginService.register(username,password)
         req.session.username = username
         res.redirect('/login')
