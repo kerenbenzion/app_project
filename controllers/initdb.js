@@ -54,6 +54,12 @@ async function initdb(req, res) {
     login.register('user2', '1234')
     login.register('user3', '1234')
     login.register('user4', '1234')
+    login.register('user5', '1234')
+    login.register('user6', '1234')
+    login.register('user7', '1234')
+    login.register('user8', '1234')
+    login.register('user9', '1234')
+    login.register('admin', '1234')
 
     res.send('updated')
 }
