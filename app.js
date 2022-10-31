@@ -30,7 +30,6 @@ app.use('/', require('./routes/homepage'));
 app.use('/', require('./routes/product-category-router'));
 app.use('/', require('./routes/init_db'));
 
-
 app.get('*', function (req, res) {
     res.status(404).send('404 Page not found');
 });
