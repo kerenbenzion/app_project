@@ -36,23 +36,30 @@ function additem(d) {
   var preview_img = document.getElementsByName('preview_img_add')[0].value
   var hover_img = document.getElementsByName('hover_img_add')[0].value
   var color = document.getElementsByName('color_add')[0].value
-  var data = {
-    "name": name,
-    "description": description,
-    "size": size,
-    "type": type,
-    "price": price,
-    "hover_img": hover_img,
-    "preview_img": preview_img,
-    "color": color
-  }
-  $.ajax({
-    url: urlCall,
-    type: 'POST',
-    data: data,
-    success: function (result) {
-      window.location.href = "/products";
-    }
+
+
+  var settings = {
+    "url": "/products/add_product",
+    "method": "POST",
+    "timeout": 0,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "data": JSON.stringify({
+      "price": price,
+      "name": name,
+      "color": color.split(','),
+      "preview_img": preview_img,
+      "hover_img": hover_img,
+      "description": description,
+      "size": size.split(','),
+      "type": type
+    }),
+  };
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    window.location.href = "/products"
   });
   closeFormAdd();
 }
