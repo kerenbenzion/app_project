@@ -1,0 +1,36 @@
+body {
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  font-family: arial;
+  position: relative;
+  text-align: center;
+  background-color: #faf9f8;
+}
+.content {
+  text-align: center;
+}
+
+.facebook-form {
+  margin: 0 auto;
+  width: 250px;
+  border: 2px solid #4d98fb;
+  border-radius: 5px;
+  text-align: center;
+}
+
+form>div {
+  padding: 10px;
+  margin: 5px;
+}
+
+.submit-button {
+  color: #FFF;
+  background-color: #4d98fb;
+  padding: 5px;
+  width: 100px;
+  margin: 5px;
+  border-color: gray;
+  border-radius: 5px;
+  text-shadow: 2px 2px gray;
+}
