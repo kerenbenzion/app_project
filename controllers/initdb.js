@@ -2,6 +2,7 @@ const res = require("express/lib/response");
 const { resetWatchers } = require("nodemon/lib/monitor/watch");
 const Product = require("../models/Product");
 const login = require("../services/login");
+const login_model = require("../model/login");
 
 async function initdb(req, res) {
     await Product.deleteMany({})
@@ -50,16 +51,17 @@ async function initdb(req, res) {
     createProduct('160', 'טבעת מונקי בולס', ['gold', 'silver'], 'https://shanijacobi.co.il/wp-content/uploads/2015/02/monkey-balls-ring-silver-top-600x600.jpg', 'https://shanijacobi.co.il/wp-content/uploads/2015/02/monkey-balls-ring-gold-600x600.jpg', 'rings', 'טבעת מונקי בולס – טבעת אורבנית מגניבה, עשויה מפליז בציפוי איכותי של זהב 24 קראט או ציפוי כסף טהור. הטבעת מתכווננת לפי גודל האצבע.', ['S', 'M'])
     createProduct('100', 'טבעת ליה', ['gold'], 'https://shanijacobi.co.il/wp-content/uploads/2020/02/rings-600x600.jpg', 'https://shanijacobi.co.il/wp-content/uploads/2020/02/lya-ring-gold-600x600.jpg', 'rings', 'טבעת ליה היא טבעת בצורת הפטגון (משובע) עם קטע מיוחד של עיטורים. טבעת מושלמת ומלאת סטייל, פתוחה בקצה ומתאימה למגוון רחב של אצבעות.', ['S', 'M'])
 
-    login.register('user1', '1234')
-    login.register('user2', '1234')
-    login.register('user3', '1234')
-    login.register('user4', '1234')
-    login.register('user5', '1234')
-    login.register('user6', '1234')
-    login.register('user7', '1234')
-    login.register('user8', '1234')
-    login.register('user9', '1234')
-    login.register('admin', '1234')
+    await login_model.deleteMany({})
+    login.register('user1', '1234', 'no')
+    login.register('user2', '1234', 'no')
+    login.register('user3', '1234', 'no')
+    login.register('user4', '1234', 'no')
+    login.register('user5', '1234', 'no')
+    login.register('user6', '1234', 'no')
+    login.register('user7', '1234', 'no')
+    login.register('user8', '1234', 'no')
+    login.register('user9', '1234', 'no')
+    login.register('admin', '1234', 'yes')
 
     res.send('updated')
 }

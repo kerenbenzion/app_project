@@ -5,30 +5,31 @@ const alert = require("alert");
 
 async function login(username, password) {
     const user = await User.findOne({ _id: username });
-    if(!user._id){
+    if (!user._id) {
         alert("'Incorrect user or password'")
         throw new Error('Incorrect user or password')
     }
     const isValid = await bcrypt.compare(password, user.password)
-    if(!isValid){
+    if (!isValid) {
         alert("'Incorrect user or password'")
         throw new Error('Incorrect user or password')
     }
     return user != null
 }
 
-async function register(username, password) {
+async function register(username, password, isAdmin) {
     const user = await User.findOne({ _id: username });
-    if(user){
+    if (user) {
         alert("Username already exists. Please try another username.")
         throw new Error('Username already exists')
     }
     const newuser = new User({
         _id: username,
-        password
+        password,
+        isAdmin
     });
 
-    await newuser.save()        
+    await newuser.save()
 }
 
 module.exports = { login, register }
