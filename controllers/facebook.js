@@ -9,10 +9,7 @@ function postfacebook(req,res){
     if(result){
         res.redirect('/products')
     }
-<<<<<<< HEAD
-=======
     // res.redirect('/products')
->>>>>>> origin/main
 
 }
 function facebookForm(req,res){
