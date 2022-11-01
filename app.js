@@ -28,5 +28,6 @@ app.use('/', require('./routes/facebook'));
 app.use('/', require('./routes/single-product-router'));
 app.use('/', require('./routes/homepage'));
 app.use('/', require('./routes/product-category-router'));
+app.use('/', require('./routes/exchange'));
 
 app.listen(process.env.PORT)
