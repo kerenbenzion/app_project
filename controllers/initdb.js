@@ -2,7 +2,7 @@ const res = require("express/lib/response");
 const { resetWatchers } = require("nodemon/lib/monitor/watch");
 const Product = require("../models/Product");
 const login = require("../services/login");
-const login_model = require("../model/login");
+const login_model = require("../models/User");
 
 async function initdb(req, res) {
     await Product.deleteMany({})
