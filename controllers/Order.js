@@ -3,12 +3,14 @@ const Order = require("../models/Order");
 function create_order(req,res){
     var products=req.body.products;
     var username = req.body.username;
+    var date = req.body.date;
     if(products == null || username == null){
         res.status(400).send("You did not enter all the needed parameters :( Please try again")
     }else {
         const order = new Order({
             products: products,
-            username: username
+            username: username,
+            date: date
         });
         order.save().then(res.status(200).send('success'))
     }

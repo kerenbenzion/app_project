@@ -9,6 +9,10 @@ const Order = new mongoose.Schema({
   username: {
     type: String,
     required: true,
+  },
+  date: {
+    type: Date,
+    required: true
   }
 });
 

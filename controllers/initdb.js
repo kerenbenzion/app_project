@@ -63,7 +63,21 @@ async function initdb(req, res) {
     login.register('user9', '1234', 'no')
     login.register('admin', '1234', 'yes')
 
-    res.send('updated')
+
+    var results = await Product.find({}, { "_id": 1 })
+    for (let num_orders = 0; num_orders < 10; num_orders++) {
+        var arr_products = []
+        var date = new Date();
+        for (let i = 0; i < 5; i++) {
+            var product_num = Math.floor(Math.random() * 40);
+            arr_products.push(results[product_num])
+        }
+        console.log(date)
+    }
+
+    console.log(results.length)
+
+    res.send(results)
 }
 
 
