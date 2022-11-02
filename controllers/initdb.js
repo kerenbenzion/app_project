@@ -72,7 +72,6 @@ async function initdb(req, res) {
     for (let num_orders = 0; num_orders < 10; num_orders++) {
         var arr_products = []
         var date = randomDate(new Date(2022, 0, 1), new Date());
-        //var date = new Date();
         console.log(date)
         var user = "user" + (Math.floor(Math.random() * 9) + 1);
         for (let i = 0; i < 5; i++) {
