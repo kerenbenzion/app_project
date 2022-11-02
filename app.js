@@ -29,6 +29,7 @@ app.use('/', require('./routes/single-product-router'));
 app.use('/', require('./routes/homepage'));
 app.use('/', require('./routes/product-category-router'));
 app.use('/', require('./routes/graph'));
+app.use('/', require('./routes/prices'));
 
 
 app.get('*', function (req, res) {

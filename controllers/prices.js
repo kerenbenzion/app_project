@@ -1,11 +1,13 @@
 const { resetWatchers } = require("nodemon/lib/monitor/watch");
+
 const graphService = require("../services/graph")
 
-async function getgraph(req,res){
+async function price(req,res){
     const result = await graphService.getPrices();
-    res.render('../views/graphs', {priceData:result});
+    res.render('../views/prices', {priceData:result});
 }
 
+
 module.exports={
-    getgraph,
+    price,
 }

@@ -16,7 +16,7 @@
     <h1>Graphs</h1>
     <div id="BNK_graph"></div>
 
-
+</body>
 <script>
 
 // set the dimensions and margins of the graph
@@ -33,12 +33,23 @@ var svg = d3.select("#BNK_graph")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-// get the data
-d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/1_OneNum.csv", function(data) {
+    
+var w = document.getElementsByClassName("card-text")
 
+var dataarr = "price"
+for (var i = 0; i < w.length; i++)
+{
+    var price = String(w[i].innerHTML)
+    //dataarr.(price.substring(0,price.length-1));
+}
+console.log("testtt")
+console.log(dataarr)
+
+d3.csv("prices", function(data) {
+    console.log(data)
   // X axis: scale and draw:
   var x = d3.scaleLinear()
-      .domain([0, 1000])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
+      .domain([50, 300])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
       .range([0, width]);
   svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -52,7 +63,6 @@ d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_data
 
   // And apply this function to data to get the bins
   var bins = histogram(data);
-
   // Y axis: scale and draw:
   var y = d3.scaleLinear()
       .range([height, 0]);
