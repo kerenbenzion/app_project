@@ -3,9 +3,15 @@ const { resetWatchers } = require("nodemon/lib/monitor/watch");
 const Product = require("../models/Product");
 const login = require("../services/login");
 const login_model = require("../models/User");
+const order = require('../models/Order');
+const Order = require("../models/Order");
 
 async function initdb(req, res) {
     await Product.deleteMany({})
+    await Order.deleteMany({})
+    await login_model.deleteMany({})
+
+
     createProduct('120', 'עגילי פרפר', ['gold'], 'https://giolli.co.il/wp-content/uploads/2020/05/5143.jpg', 'https://giolli.co.il/wp-content/uploads/2020/09/E11871G-1.jpg', 'earrings', 'עגילים יפייפים בצורת פרפר', ['S', 'M', 'L'])
     createProduct('125', 'עגילי חישוק פרפר', ['gold', 'silver'], 'https://shanijacobi.co.il/wp-content/uploads/2022/08/butterfly_earrings.jpg', 'https://shanijacobi.co.il/wp-content/uploads/2022/08/35.jpg', 'earrings', 'עגילי חישוק מהממים', ['S', 'M', 'L'])
     createProduct('200', 'עגילי גולייט', ['gold', 'silver'], 'https://shanijacobi.co.il/wp-content/uploads/2021/01/milan-earrings-set-silver-600x600.jpg', 'https://shanijacobi.co.il/wp-content/uploads/2020/10/juliat-600x600.jpg', 'earrings', 'סט עגילים ג’ולייט הוא סט היסטרי המורכב מחמישה עגילים שונים בשילוב פנינים טבעיות שמשדרגות כל הופעה!', ['S', 'M', 'L'])
@@ -51,7 +57,6 @@ async function initdb(req, res) {
     createProduct('160', 'טבעת מונקי בולס', ['gold', 'silver'], 'https://shanijacobi.co.il/wp-content/uploads/2015/02/monkey-balls-ring-silver-top-600x600.jpg', 'https://shanijacobi.co.il/wp-content/uploads/2015/02/monkey-balls-ring-gold-600x600.jpg', 'rings', 'טבעת מונקי בולס – טבעת אורבנית מגניבה, עשויה מפליז בציפוי איכותי של זהב 24 קראט או ציפוי כסף טהור. הטבעת מתכווננת לפי גודל האצבע.', ['S', 'M'])
     createProduct('100', 'טבעת ליה', ['gold'], 'https://shanijacobi.co.il/wp-content/uploads/2020/02/rings-600x600.jpg', 'https://shanijacobi.co.il/wp-content/uploads/2020/02/lya-ring-gold-600x600.jpg', 'rings', 'טבעת ליה היא טבעת בצורת הפטגון (משובע) עם קטע מיוחד של עיטורים. טבעת מושלמת ומלאת סטייל, פתוחה בקצה ומתאימה למגוון רחב של אצבעות.', ['S', 'M'])
 
-    await login_model.deleteMany({})
     login.register('user1', '1234', 'no')
     login.register('user2', '1234', 'no')
     login.register('user3', '1234', 'no')
@@ -63,21 +68,28 @@ async function initdb(req, res) {
     login.register('user9', '1234', 'no')
     login.register('admin', '1234', 'yes')
 
-
     var results = await Product.find({}, { "_id": 1 })
     for (let num_orders = 0; num_orders < 10; num_orders++) {
         var arr_products = []
-        var date = new Date();
+        var date = randomDate(new Date(2022, 0, 1), new Date());
+        //var date = new Date();
+        console.log(date)
+        var user = "user" + (Math.floor(Math.random() * 9) + 1);
         for (let i = 0; i < 5; i++) {
             var product_num = Math.floor(Math.random() * 40);
             arr_products.push(results[product_num])
         }
-        console.log(date)
+        createorder(arr_products, date, user);
     }
 
-    console.log(results.length)
+    orders = await Order.find({})
 
-    res.send(results)
+    // console.log(results.length)
+    res.send('updated')
+}
+
+function randomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }
 
 
@@ -93,6 +105,15 @@ function createProduct(price, name, color, preview_img, hover_img, type, descrip
         size: size
     });
     product.save()
+}
+
+function createorder(products, date, user) {
+    const order = new Order({
+        username: user,
+        date: date,
+        products: products
+    });
+    order.save();
 }
 module.exports = {
     initdb,
