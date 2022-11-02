@@ -28,6 +28,7 @@ app.use('/', require('./routes/facebook'));
 app.use('/', require('./routes/single-product-router'));
 app.use('/', require('./routes/homepage'));
 app.use('/', require('./routes/product-category-router'));
+app.use('/', require('./routes/exchange'));
 app.use('/', require('./routes/init_db'));
 
 app.get('*', function (req, res) {
