@@ -30,7 +30,7 @@ app.use('/', require('./routes/homepage'));
 app.use('/', require('./routes/product-category-router'));
 app.use('/', require('./routes/graph'));
 app.use('/', require('./routes/prices'));
-app.use('/', require('./routes/orderDate'));
+app.use('/', require('./routes//orderGraph'));
 app.use('/', require('./routes/exchange'));
 app.use('/', require('./routes/init_db'));
 

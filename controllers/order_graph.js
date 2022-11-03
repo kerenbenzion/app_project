@@ -4,7 +4,7 @@ const graphService = require("../services/graph")
 
 async function orderDate(req,res){
     const result = await graphService.getOrderDates();
-    res.render('../views/orderGraph', {orderData:result});
+    res.render('../views/orderData', {orderData:result});
 }
 
 
