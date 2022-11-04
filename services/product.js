@@ -14,4 +14,19 @@ async function getCategoryProducts(category, color){
     }
 }
 
-module.exports = {getSingleProduct, getCategoryProducts};
+// async function searchProduct(maxPrice){
+//     // returnedProducts = await Product.find({}, product => {product.name.indexOf(productName) >= 0});
+//     returnedProducts = await Product.find({$price : {$gt : parseInt(maxPrice)}});
+//     // returnedProducts = await Product.find().where('pr')
+//     // console.log(test);
+//     return returnedProducts;
+//     // return returnedProducts = await Product.find({});
+// }
+
+async function sortProductsByName(){
+    returnedProducts = await Product.find({}).sort([['name' , 1]]);
+    // console.log(returnedProducts);
+    return returnedProducts;
+}
+
+module.exports = {getSingleProduct, getCategoryProducts, sortProductsByName};
