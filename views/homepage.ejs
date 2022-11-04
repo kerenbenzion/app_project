@@ -12,6 +12,7 @@
     <body>
         <div class="header">
             <p>♡ שליח עד הבית חינם בקנייה של 249 ש"ח ♡</p>
+            <p class=userNum></p>
             <div id="optionsbar">
                 <ul id="optionsmenu1">
                     <li><button class="btn btn-light">
@@ -166,6 +167,21 @@
             מחירים נוחים
            </li>
         </footer>
+        <script>
+            var connection = new WebSocket('ws://127.0.0.1:3001');
+            var users = localStorage.getItem("usersCounter")
+            connection.onopen = function () {
+                console.log('connection is open');
+
+            };
+            connection.onerror = function (error) {
+                console.log('connection error');
+            };        
+            connection.onmessage = function (message) {
+                console.log(message.data);
+                $('.userNum').text("משתמשים מחוברים: "+message.data);
+            };
+        </script>
     </body>
     
 </html>
