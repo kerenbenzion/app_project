@@ -171,8 +171,7 @@
             var connection = new WebSocket('ws://127.0.0.1:3001');
             var users = localStorage.getItem("usersCounter")
             connection.onopen = function () {
-                // console.log(users)
-                // console.log('connection is open');
+                console.log('connection is open');
 
             };
             connection.onerror = function (error) {
