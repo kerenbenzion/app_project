@@ -59,6 +59,7 @@ app.use('/', require('./routes/prices'));
 app.use('/', require('./routes//orderGraph'));
 app.use('/', require('./routes/exchange'));
 app.use('/', require('./routes/init_db'));
+app.use('/', require('./routes/payment'));
 
 app.get('*', function (req, res) {
     res.status(404).send('404 Page not found');

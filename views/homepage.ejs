@@ -11,11 +11,9 @@
 
 </head>
 
-
 <body>
     <div class="header">
         <p>♡ שליח עד הבית חינם בקנייה של 249 ש"ח ♡</p>
-
         <div id="optionsbar">
             <ul id="optionsmenu1">
                 <li><button class="btn btn-light">
@@ -30,7 +28,6 @@
                             <path fill-rule="evenodd"
                                 d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                         </svg> </button></li>
-
                 <li>
                     <% if(username!=null ) { %>
                         <button class="btn btn-light">שלום <%=username%></button>
@@ -38,9 +35,8 @@
                             <button class="btn btn-light" onclick="openLogin()">התחבר/י</button>
                             <%}%>
                 </li>
-                <li>
-                    <div class="logo"><img src="../public/logo.png"
-                            style="height: 2.2cm; width: 2cm;margin-left: 17cm; margin-right: 19cm;"></div>
+                <div class="logo"><img src="../public/logo.png"
+                        style="height: 2.2cm; width: 2cm;margin-left: 17cm; margin-right: 19cm;"></div>
                 </li>
             </ul>
         </div>
@@ -78,8 +74,6 @@
                     <a onclick="presentProductByCategory('rings', 'gold')">טבעות זהב</a>
                 </div>
             </div>
-
-
             <% if(username!=null ) { %>
                 <div class="dropdown">
                     <button class="dropbtn btn btn-light">פעולות מנהל</button>

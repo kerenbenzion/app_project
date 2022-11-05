@@ -14,6 +14,7 @@ async function login(username, password) {
         alert("'Incorrect user or password'")
         throw new Error('Incorrect user or password')
     }
+    window.localStorage.clear()
     return user != null
 }
 

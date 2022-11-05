@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $('.nav-item a').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
@@ -45,3 +46,34 @@ $(() => {
 })
 
 
+=======
+$('.nav-item a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})
+
+
+function AddToBasket(d) {
+  var id = d.getAttribute("productid")
+  var preview_img = d.getAttribute("preview_img")
+  var price = d.getAttribute("price")
+  SaveDataToLocalStorage(id, price, preview_img)
+}
+
+function SaveDataToLocalStorage(id, price, preview_img) {
+  var a;
+  data = id + "&" + price + "&" + preview_img
+  console.log(data)
+  // Parse the serialized data back into an aray of objects
+  if (window.localStorage.getItem('cart') == null) {
+    a = []
+  } else {
+    a = window.localStorage.getItem('cart').split('|')
+  }
+  // Push the new data (whether it be an object or anything else) onto the array
+  a.push(data);
+  // Alert the array value
+  // Re-serialize the array back into a string and store it in localStorage
+  window.localStorage.setItem('cart', a.join('|'));
+}
+>>>>>>> 2d2b521 (cart)
