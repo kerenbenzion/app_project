@@ -1,4 +1,6 @@
 const express = require('express');
+var ws = require('websocket').server;
+
 const http = require('http');
 const app = express();
 const session = require('express-session')
@@ -15,11 +17,33 @@ app.use(session({
     saveUninitialized: false,
     resave: false
 }))
+
+
 app.set("view engine", "ejs");
 app.use('/public', express.static('public'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+var usersCounter = 0;
+ 
+var server = http.createServer(app).listen(3001);
+ 
+var wsServer = new ws({httpServer: server});
+
+wsServer.on('request', function (request) {
+    usersCounter++;
+
+    console.log(usersCounter);
+
+    var connection = request.accept(null, request.origin);
+ 
+    connection.sendUTF(usersCounter);    
+    
+    connection.on('close', function (connection) {
+        usersCounter--;
+        console.log('client disconnected');
+    });
+});
 
 app.use('/', require('./routes/all_products'));
 app.use('/', require('./routes/Order'));
@@ -30,9 +54,14 @@ app.use('/', require('./routes/homepage'));
 app.use('/', require('./routes/product-category-router'));
 app.use('/', require('./routes/sort-products-router'));
 app.use('/', require('./routes/information-router'));
+app.use('/', require('./routes/graph'));
+app.use('/', require('./routes/prices'));
+app.use('/', require('./routes//orderGraph'));
+app.use('/', require('./routes/exchange'));
+app.use('/', require('./routes/init_db'));
 
- 
 app.get('*', function (req, res) {
     res.status(404).send('404 Page not found');
 });
-app.listen(process.env.PORT)
+
+//app.listen(process.env.PORT)
