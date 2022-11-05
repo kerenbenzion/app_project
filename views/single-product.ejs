@@ -15,14 +15,7 @@
   <div class="row p-5">
     <!-- swap images -->
     <div id="myCarousel" class="carousel slide col-5" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="active" src=<%=singleProduct.preview_img%>>
-        </div>
-        <div class="carousel-item">
-          <img class="" src=<%=singleProduct.hover_img%>>
-        </div>
-    </div>
+      
       <!-- errows buttons -->
       <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"
         onclick="$('#myCarousel').carousel('prev')">
@@ -37,32 +30,23 @@
     </div>
 
     <!-- single product information -->
-    <div class="product-info col p-5">
-      <aside>
-        <h2><%=singleProduct.name%></h2>
-        <h3><%=singleProduct.price%> ₪</h3>
-        <p><%=singleProduct.description%></p>
-      </aside>
-
+    <div class="product-info col p-5" >
+      <div id="product_info"></div>
       <!-- Order information -->
       <div class="row pt-4">
         <p class="col-2">סוג ציפוי</p>
-        <select class="form-select col" aria-label="Default select example">
+        <select class="form-select col" aria-label="Default select example" id="color_option">
           <option selected>בחירת אפשרות</option>
-          <% for(var i=0; i<singleProduct.color.length; i++) {%>
-            <option value=<%=i+1%>><%=singleProduct.color[i]%></option>
-          <%}%>
+          
         </select>
       </div>
 
       <!-- Order information -->
       <div class="row pt-3">
         <p class="col-2">בחירת מידה</p>
-        <select class="form-select col" aria-label="Default select example">
+        <select class="form-select col" aria-label="Default select example" id="size_option">
           <option selected>בחירת אפשרות</option>
-          <% for(var i=0; i<singleProduct.size.length; i++) {%>
-            <option value=<%=i+1%>><%=singleProduct.size[i]%></option>
-          <%}%>
+          
         </select>
       </div>
 
@@ -76,86 +60,89 @@
 
   <!-- extra information -->
   <div class="p-3 row">
-      <!-- Tabs navs -->
-      <ul class="nav nav-tabs mb-3 p-3" id="ex1" role="tablist">
-        <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab"
-            aria-controls="ex1-tabs-1" aria-selected="true">
-            תיאור</a>
-        </li>
-        <li class="nav-item" role="presentation">
-          <a class="nav-link" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab"
-            aria-controls="ex1-tabs-2" aria-selected="false">
-            אחראיות ושמירה על הפריט</a>
-        </li>
-        <li class="nav-item" role="presentation">
-          <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab"
-            aria-controls="ex1-tabs-3" aria-selected="false">
-            החלפות והחזרות</a>
-        </li>
-        <li class="nav-item" role="presentation">
-          <a class="nav-link" id="ex1-tab-4" data-mdb-toggle="tab" href="#ex1-tabs-4" role="tab"
-            aria-controls="ex1-tabs-4" aria-selected="false">
+    <!-- Tabs navs -->
+    <ul class="nav nav-tabs mb-3 p-3" id="ex1" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab"
+          aria-controls="ex1-tabs-1" aria-selected="true">
+          תיאור</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab"
+          aria-controls="ex1-tabs-2" aria-selected="false">
+          אחראיות ושמירה על הפריט</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3" role="tab"
+          aria-controls="ex1-tabs-3" aria-selected="false">
+          החלפות והחזרות</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="ex1-tab-4" data-mdb-toggle="tab" href="#ex1-tabs-4" role="tab"
+          aria-controls="ex1-tabs-4" aria-selected="false">
           משלוחים</a>
-        </li>
-      </ul>
+      </li>
+    </ul>
 
-      <!-- Tabs content -->
-      <div class="tab-content" id="ex1-content">
-        <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-          <p>
-            <b>חומרים</b><br>
-            המוצר עשוי מסוגים שונים של מתכות אל-חלד.<br>
-            <b>מידות</b><br>
-            <% for(var i=0; i<singleProduct.size.length; i++) {%>
-              <%=singleProduct.size[i]%> 
-            <%}%><br>
+    <!-- Tabs content -->
+    <div class="tab-content" id="ex1-content">
+      <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+        <p>
+          <b>חומרים</b><br>
+          המוצר עשוי מסוגים שונים של מתכות אל-חלד.<br>
+          <b>מידות</b><br>
+        <p id="size">
+        </p>
 
-          </p>
-        </div>
-        <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-          <p>
-            <b>אחראיות</b><br>
-            כל התכשיטים שלנו מגיעים עם אחראיות לשנה הכוללת תיקון וציפוי מחדש!<br>
-            יש לשמור על תעודת האחריות על מנת להציגה במקרה הצורך.<br>
-            האחריות אינה תקפה במקרים של שריטות, שברים או אובדן.<br><br>
-            <b>שמירה על התכשיט</b><br>
-            על מנת לשמור על התכשיטים יפים ומנצנצים לאורך זמן אנו ממליצים שלא להביאם במגע עם מים, חומרי ניקיון, קרמים, בשמים וכדומה.<br>
-            מומלץ שלא לאחסן את התכשיטים במקומות לחים וכן להסירם לפני השינה, פעילות ספורטיבית, בריכה וכו.<br>
-          </p>        
-        </div>
-        <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-          <p>
-            מעוניינת להחזיר או להחליף פריט? ניתן לעשות זאת בקלות ובפשטות!<br><br>
-            <b>רוצה להחליף?</b>
-            <ul>
-              <li>ניתן להחליף פריטים שנרכשו באתר עד 14 יום מיום קבלת הפריט, בדואר חוזר או בחנות שלנו, בתנאי שלא נעשה בהם שימוש וכנגד קבלה או פתק החלפה.</li>
-              <li>הפריט שאליו תרצי להחליף ישלח אליך חזרה בדואר רשום ללא עלות נוספת.</li>
-              <li>פריטים שנרכשו במבצע או בקטגוריית הסייל ניתנים להחלפה בתוך שבוע מיום קבלתם.</li>
-            </ul><br>
-            <b>רוצה להחזיר?</b><br>
-            <ul>
-              <li>ניתן להחזיר פריטים תמורת זיכוי קרדיט באתר או החזר כספי מלא עד 14 ימים מיום קבלת הפריט, בדואר חוזר או בחנות שלנו, בתנאי שלא נעשה בהם שימוש, שלא נפל בהם שום פגם/נזק וכנגד קבלה בהתאם להוראות חוק הגנת הצרכן.</li>
-              <li>פריטים שנרכשו במבצע או בקטגוריית הסייל ניתנים להחזרה עד יומיים מיום קבלתם.</li>
-              <li>לא יינתן זיכוי או החזר כספי על דמי משלוח.</li>
-              <li>תכשיט שנוצר בהזמנה אישית, לא ניתן להחזיר או להחליף</li>
-            </ul>
-          </p>
-        </div>
-        <div class="tab-pane fade" id="ex1-tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">
-          <p>
-            <b>שליח עד הבית - חינם! </b>בהזמנה מעל 350 ₪<br>
-            בהזמנה מתחת 350 ₪ עלות שליח עד הבית 25 ₪ בלבד.<br>
-            זמן משלוח: עד 2 ימי עסקים מיום המשלוח - לרוב זה מגיע לפני אבל חשוב שתדעי שבגלל העומסים ייתכנו עיכובים גם מעבר לתקופת זמן זו. תודה על ההבנה והסבלנות <br><br>
-            <b>איסוף עצמי - ללא עלות</b><br>
-            <ul>
-              <li>דיזנגוף סנטר, תל אביב - בניין A, קומה 1 מול זארה</li>
-              <li>קניון איילון, רמת גן - כניסת שער איילון צמוד למנגו</li>
-              <li>קניון עזריאלי, תל אביב - קומה 2 צמוד לנייקי</li>
-            </ul>
-          </p>>
-        </div>
+        </p>
       </div>
+      <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+        <p>
+          <b>אחראיות</b><br>
+          כל התכשיטים שלנו מגיעים עם אחראיות לשנה הכוללת תיקון וציפוי מחדש!<br>
+          יש לשמור על תעודת האחריות על מנת להציגה במקרה הצורך.<br>
+          האחריות אינה תקפה במקרים של שריטות, שברים או אובדן.<br><br>
+          <b>שמירה על התכשיט</b><br>
+          על מנת לשמור על התכשיטים יפים ומנצנצים לאורך זמן אנו ממליצים שלא להביאם במגע עם מים, חומרי ניקיון, קרמים,
+          בשמים וכדומה.<br>
+          מומלץ שלא לאחסן את התכשיטים במקומות לחים וכן להסירם לפני השינה, פעילות ספורטיבית, בריכה וכו.<br>
+        </p>
+      </div>
+      <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+        <p>
+          מעוניינת להחזיר או להחליף פריט? ניתן לעשות זאת בקלות ובפשטות!<br><br>
+          <b>רוצה להחליף?</b>
+        <ul>
+          <li>ניתן להחליף פריטים שנרכשו באתר עד 14 יום מיום קבלת הפריט, בדואר חוזר או בחנות שלנו, בתנאי שלא נעשה בהם
+            שימוש וכנגד קבלה או פתק החלפה.</li>
+          <li>הפריט שאליו תרצי להחליף ישלח אליך חזרה בדואר רשום ללא עלות נוספת.</li>
+          <li>פריטים שנרכשו במבצע או בקטגוריית הסייל ניתנים להחלפה בתוך שבוע מיום קבלתם.</li>
+        </ul><br>
+        <b>רוצה להחזיר?</b><br>
+        <ul>
+          <li>ניתן להחזיר פריטים תמורת זיכוי קרדיט באתר או החזר כספי מלא עד 14 ימים מיום קבלת הפריט, בדואר חוזר או בחנות
+            שלנו, בתנאי שלא נעשה בהם שימוש, שלא נפל בהם שום פגם/נזק וכנגד קבלה בהתאם להוראות חוק הגנת הצרכן.</li>
+          <li>פריטים שנרכשו במבצע או בקטגוריית הסייל ניתנים להחזרה עד יומיים מיום קבלתם.</li>
+          <li>לא יינתן זיכוי או החזר כספי על דמי משלוח.</li>
+          <li>תכשיט שנוצר בהזמנה אישית, לא ניתן להחזיר או להחליף</li>
+        </ul>
+        </p>
+      </div>
+      <div class="tab-pane fade" id="ex1-tabs-4" role="tabpanel" aria-labelledby="ex1-tab-4">
+        <p>
+          <b>שליח עד הבית - חינם! </b>בהזמנה מעל 350 ₪<br>
+          בהזמנה מתחת 350 ₪ עלות שליח עד הבית 25 ₪ בלבד.<br>
+          זמן משלוח: עד 2 ימי עסקים מיום המשלוח - לרוב זה מגיע לפני אבל חשוב שתדעי שבגלל העומסים ייתכנו עיכובים גם מעבר
+          לתקופת זמן זו. תודה על ההבנה והסבלנות <br><br>
+          <b>איסוף עצמי - ללא עלות</b><br>
+        <ul>
+          <li>דיזנגוף סנטר, תל אביב - בניין A, קומה 1 מול זארה</li>
+          <li>קניון איילון, רמת גן - כניסת שער איילון צמוד למנגו</li>
+          <li>קניון עזריאלי, תל אביב - קומה 2 צמוד לנייקי</li>
+        </ul>
+        </p>>
+      </div>
+    </div>
   </div>
 
 
@@ -164,7 +151,40 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
     integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
     crossorigin="anonymous"></script>
-  <script src="../public/js/single-product.js"></script>
+  <script src="../public/scripts/single-product.js"></script>
+
+  <script type="text/html" id="imgs_template">
+    <div id="myCarousel" class="carousel slide col-5" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="active" src={preview_img}>
+        </div>
+        <div class="carousel-item">
+          <img class="" src={hover_img}>
+        </div>
+      </div>
+  </script>
+
+  <script type="text/html" id="product_info_template">
+    <aside>
+        <h2>{name}</h2>
+        <h3>{price} ₪</h3>
+        <p>{description}</p>
+      </aside>
+  </script>
+
+  <script type="text/html" id="size_template">
+    {size}
+  </script>
+
+  <script type="text/html" id="size_option_template">
+    <option value='{index}'>{size}</option>
+  </script>
+
+  <script type="text/html" id="color_option_template">
+      <option value='{index}'>{color}</option>
+  </script>
+
 </body>
 
 </html>
