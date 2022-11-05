@@ -1,5 +1,6 @@
 const facebookService = require("../services/facebook_server");
 const { use } = require("../routes/facebook");
+const alert = require("alert");
 
 
 function postfacebook(req,res){
@@ -7,10 +8,10 @@ function postfacebook(req,res){
     const result = facebookService.publishPost(msg)
     console.log(result)
     if(result){
-        res.redirect('/products')
-    }
-    // res.redirect('/products')
+        alert("Post has been published!")
+        res.render("facebook",{})
 
+    }
 }
 function facebookForm(req,res){
     res.render("facebook",{})
