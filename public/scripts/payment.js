@@ -16,10 +16,7 @@ var total = document.getElementById("total");
 total.innerHTML = total_price + "₪"
 
 
-console.log(window.localStorage.getItem('cart'))
-
 function dollarexchange() {
-
     var settings = {
         "url": "http://localhost:3001/exchange",
         "method": "POST",
@@ -31,9 +28,7 @@ function dollarexchange() {
             "value": total_price
         }),
     };
-
     $.ajax(settings).done(function (response) {
-        document.getElementById('total').innerHTML = ""
         document.getElementById('total').innerHTML = response + "$"
     });
 }
