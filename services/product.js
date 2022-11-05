@@ -25,8 +25,16 @@ async function getCategoryProducts(category, color){
 
 async function sortProductsByName(){
     returnedProducts = await Product.find({}).sort([['name' , 1]]);
-    // console.log(returnedProducts);
     return returnedProducts;
 }
 
-module.exports = {getSingleProduct, getCategoryProducts, sortProductsByName};
+async function sortProductsByPrice(){
+    returnedProducts = await Product.find({}).sort([['price' , 1]]);
+    return returnedProducts;
+}
+
+async function sortProductsByPriceDesc(){
+    returnedProducts = await Product.find({}).sort([['price' , -1]]);
+    return returnedProducts;
+}
+module.exports = {getSingleProduct, getCategoryProducts, sortProductsByName, sortProductsByPrice, sortProductsByPriceDesc};
