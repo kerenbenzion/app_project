@@ -23,7 +23,6 @@ function sortProductsByName(){
                 search_template = search_template.replaceAll('{'+key+'}' , element[key]);
             }
 
-
             $('#products').append(search_template);
         }
             
