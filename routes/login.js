@@ -6,6 +6,6 @@ router.get('/register', loginController.registerForm);
 router.post('/register', loginController.register);
 router.get('/login', loginController.loginForm);
 router.post('/login', loginController.login);
-router.get('/', loginController.isLoggedIn, loginController.foo);
+// router.get('/login', loginController.isLoggedIn, loginController.foo);
 
 module.exports = router;

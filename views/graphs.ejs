@@ -1,134 +1,155 @@
 <!DOCTYPE html>
-<html  lang="en">
+<html lang="en">
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Create a div where the graph will take place -->
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <link rel="stylesheet" href="../public/css/graph.css" type="text/css">
 
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../public/css/graph.css" type="text/css">
+
+</head>
+
 <body>
-    <div id="BNK_graph_price">        
-            <h1>Graph prices</h1>
+    <p class=userNum></p>
+    <div id="BNK_graph_price">
+        <h1>Graph prices</h1>
     </div>
     <div id="BNK_graph_order">
         <h1>Graph orders</h1>
     </div>
     <div id="max">
         <h4>Conclusions: </h4>
-        <p>The month <%=maxOrder[0]._id%> is when we had the highest number of orders which was <%=maxOrder[0].count%></p>
+        <p>The month <%=maxOrder[0]._id%> is when we had the highest number of orders which was <%=maxOrder[0].count%>
+        </p>
     </div>
 </body>
 <script>
 
-// set the dimensions and margins of the graph
-var margin_price = {top: 10, right: 30, bottom: 30, left: 40},
-    width = 460 - margin_price.left - margin_price.right,
-    height = 400 - margin_price.top - margin_price.bottom;
+    // set the dimensions and margins of the graph
+    var margin_price = { top: 10, right: 30, bottom: 30, left: 40 },
+        width = 460 - margin_price.left - margin_price.right,
+        height = 400 - margin_price.top - margin_price.bottom;
 
-// append the svg object to the body of the page
-var svg1 = d3.select("#BNK_graph_price")
-  .append("svg")
-    .attr("width", width + margin_price.left + margin_price.right)
-    .attr("height", height + margin_price.top + margin_price.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin_price.left + "," + margin_price.top + ")");
-
-
-d3.csv("prices", function(data) {
-  // X axis: scale and draw:
-  var x = d3.scaleLinear()
-      .domain([50, 300])
-      .range([0, width]);
-  svg1.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
-
-  // set the parameters for the histogram
-  var histogram = d3.histogram()
-      .value(function(d) { return d.price; }) 
-      .domain(x.domain()) 
-      .thresholds(x.ticks(70)); 
-
-  // And apply this function to data to get the bins
-  var bins = histogram(data);
-  var y = d3.scaleLinear()
-      .range([height, 0]);
-      y.domain([0, d3.max(bins, function(d) { return d.length; })]);
-  svg1.append("g")
-      .call(d3.axisLeft(y));
-
-  // append the bar rectangles to the svg element
-  svg1.selectAll("rect")
-      .data(bins)
-      .enter()
-      .append("rect")
-        .attr("x", 1)
-        .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
-        .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
-        .attr("height", function(d) { return height - y(d.length); })
-        .style("fill", "#69b3a2")
-
-});
+    // append the svg object to the body of the page
+    var svg1 = d3.select("#BNK_graph_price")
+        .append("svg")
+        .attr("width", width + margin_price.left + margin_price.right)
+        .attr("height", height + margin_price.top + margin_price.bottom)
+        .append("g")
+        .attr("transform",
+            "translate(" + margin_price.left + "," + margin_price.top + ")");
 
 
-// set the dimensions and margins of the graph
-var margin = {top: 20, right: 30, bottom: 30, left: 40},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    d3.csv("prices", function (data) {
+        // X axis: scale and draw:
+        var x = d3.scaleLinear()
+            .domain([50, 300])
+            .range([0, width]);
+        svg1.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
 
-// append the svg object to the body of the page
-var svg = d3.select("#BNK_graph_order")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+        // set the parameters for the histogram
+        var histogram = d3.histogram()
+            .value(function (d) { return d.price; })
+            .domain(x.domain())
+            .thresholds(x.ticks(70));
+
+        // And apply this function to data to get the bins
+        var bins = histogram(data);
+        var y = d3.scaleLinear()
+            .range([height, 0]);
+        y.domain([0, d3.max(bins, function (d) { return d.length; })]);
+        svg1.append("g")
+            .call(d3.axisLeft(y));
+
+        // append the bar rectangles to the svg element
+        svg1.selectAll("rect")
+            .data(bins)
+            .enter()
+            .append("rect")
+            .attr("x", 1)
+            .attr("transform", function (d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+            .attr("width", function (d) { return x(d.x1) - x(d.x0) - 1; })
+            .attr("height", function (d) { return height - y(d.length); })
+            .style("fill", "#69b3a2")
+
+    });
 
 
-d3.csv("orderGraph", function(data) {
-  // X axis: scale and draw:
-  var x = d3.scaleLinear()
-      .domain([1, 12]) 
-      .range([0, width]);
-  svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+    // set the dimensions and margins of the graph
+    var margin = { top: 20, right: 30, bottom: 30, left: 40 },
+        width = 460 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
 
-  // set the parameters for the histogram
-  var histogram = d3.histogram()
-      .value(function(d) { return d.date; }) 
-      .domain(x.domain())  
-      .thresholds(x.ticks(70)); 
+    // append the svg object to the body of the page
+    var svg = d3.select("#BNK_graph_order")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
 
-  // apply this function to data to get the bins
-  var bins = histogram(data);
-  var y = d3.scaleLinear()
-      .range([height, 0]);
-      y.domain([0, d3.max(bins, function(d) { return d.length; })]);
-  svg.append("g")
-      .call(d3.axisLeft(y));
 
-  // append the bar rectangles to the svg element
-  svg.selectAll("rect")
-      .data(bins)
-      .enter()
-      .append("rect")
-        .attr("x", 1)
-        .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
-        .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
-        .attr("height", function(d) { return height - y(d.length); })
-        .style("fill", "#69b3a2")
+    d3.csv("orderGraph", function (data) {
+        // X axis: scale and draw:
+        var x = d3.scaleLinear()
+            .domain([1, 12])
+            .range([0, width]);
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
 
-});
+        // set the parameters for the histogram
+        var histogram = d3.histogram()
+            .value(function (d) { return d.date; })
+            .domain(x.domain())
+            .thresholds(x.ticks(70));
+
+        // apply this function to data to get the bins
+        var bins = histogram(data);
+        var y = d3.scaleLinear()
+            .range([height, 0]);
+        y.domain([0, d3.max(bins, function (d) { return d.length; })]);
+        svg.append("g")
+            .call(d3.axisLeft(y));
+
+        // append the bar rectangles to the svg element
+        svg.selectAll("rect")
+            .data(bins)
+            .enter()
+            .append("rect")
+            .attr("x", 1)
+            .attr("transform", function (d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+            .attr("width", function (d) { return x(d.x1) - x(d.x0) - 1; })
+            .attr("height", function (d) { return height - y(d.length); })
+            .style("fill", "#69b3a2")
+
+    });
 
 </script>
+
+<script>
+    var connection = new WebSocket('ws://127.0.0.1:3001');
+    var users = localStorage.getItem("usersCounter")
+    connection.onopen = function () {
+        console.log('connection is open');
+
+    };
+    connection.onerror = function (error) {
+        console.log('connection error');
+    };
+    connection.onmessage = function (message) {
+        console.log(message.data);
+        $('.userNum').text("משתמשים מחוברים: " + message.data);
+    };
+</script>
 </body>
+
 </html>

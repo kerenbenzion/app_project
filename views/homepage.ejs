@@ -11,10 +11,11 @@
 
 </head>
 
+
 <body>
     <div class="header">
         <p>♡ שליח עד הבית חינם בקנייה של 249 ש"ח ♡</p>
-        <p class=userNum></p>
+
         <div id="optionsbar">
             <ul id="optionsmenu1">
                 <li><button class="btn btn-light">
@@ -29,125 +30,71 @@
                             <path fill-rule="evenodd"
                                 d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                         </svg> </button></li>
-                <li> <button class="btn btn-light">
-                        התחבר/י
-                    </button></li>
+
+                <li>
+                    <% if(username!=null ) { %>
+                        <button class="btn btn-light">שלום <%=username%></button>
+                        <% } else { %>
+                            <button class="btn btn-light" onclick="openLogin()">התחבר/י</button>
+                            <%}%>
+                </li>
                 <li>
                     <div class="logo"><img src="../public/logo.png"
                             style="height: 2.2cm; width: 2cm;margin-left: 17cm; margin-right: 19cm;"></div>
                 </li>
-                <li> <button class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg></button></li>
             </ul>
         </div>
 
         <div class="menu">
-            <ul id="optionsmenu1">
-                <li style="float: right;"><button class="btn btn-light">♡חדש♡</button></li>
-                <div class="dropdown">
-                    <li style="float: right;"><button class="dropbtn btn btn-light"> סט תכשיטים</button></li>
-                    <div class="dropdown-content">
-                        <ul id="dropdownmenu">
-                            <li><button class="btn btn-light">סט שרשראות </button></li>
-                            <li><button class="btn btn-light">סט עגילים </button></li>
-                            <li><button class="btn btn-light">סט צמידים לאישה </button></li>
-                        </ul>
-                        <!-- <a class="btn btn-light">סט שרשראות  </a>
-                        <a class="btn btn-light">סט עגילים  </a>
-                        <a class="btn btn-light">סט צמידים לאישה </a> -->
-                    </div>
+            <div class="dropdown">
+                <button class="dropbtn btn btn-light">שרשראות</button>
+                <div class="dropdown-content">
+                    <a onclick="presentProductByCategory('necklaces', 'all')">כל השרשראות</a>
+                    <a onclick="presentProductByCategory('necklaces', 'silver')">שרשראות כסף</a>
+                    <a onclick="presentProductByCategory('necklaces', 'gold')">שרשראות זהב</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn btn btn-light">עגילים</button>
+                <div class="dropdown-content">
+                    <a onclick="presentProductByCategory('earrings', 'all')">כל העגילים</a>
+                    <a onclick="presentProductByCategory('earrings', 'silver')">עגילי כסף</a>
+                    <a onclick="presentProductByCategory('earrings', 'gold')">עגילי זהב</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn btn btn-light">צמידים</button>
+                <div class="dropdown-content">
+                    <a onclick="presentProductByCategory('bracelets', 'all')">כל הצמידים</a>
+                    <a onclick="presentProductByCategory('bracelets', 'silver')">צמידי כסף</a>
+                    <a onclick="presentProductByCategory('bracelets', 'gold')">צמידי זהב</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn btn btn-light">טבעות</button>
+                <div class="dropdown-content">
+                    <a onclick="presentProductByCategory('rings', 'all')">כל הטבעות</a>
+                    <a onclick="presentProductByCategory('rings', 'silver')">טבעות כסף</a>
+                    <a onclick="presentProductByCategory('rings', 'gold')">טבעות זהב</a>
+                </div>
+            </div>
 
 
-                </div>
+            <% if(username!=null ) { %>
                 <div class="dropdown">
-                    <li style="float: right;"><button class="btn btn-light"> עגילים </button></li>
+                    <button class="dropbtn btn btn-light">פעולות מנהל</button>
                     <div class="dropdown-content">
-                        <ul id="dropdownmenu">
-                            <li><button class="btn btn-light" onclick="presentProductByCategory('earrings', 'all')">כל
-                                    העגילים </button></li>
-                            <li><button class="btn btn-light"
-                                    onclick="presentProductByCategory('earrings', 'silver')">עגילי כסף </button></li>
-                            <li><button class="btn btn-light"
-                                    onclick="presentProductByCategory('earrings', 'gold')">עגילי זהב </button></li>
-                        </ul>
+                        <a href="/graph">סטטיסטיקות</a>
+                        <a href="">ניהול משתמשים</a>
                     </div>
                 </div>
-                <div class="dropdown">
-                    <li style="float: right;"><button class="btn btn-light"> שרשראות </button></li>
-                    <div class="dropdown-content">
-                        <ul id="dropdownmenu">
-                            <!-- <li><button href="#" class="btn btn-light" onclick="presentProductByCategory(this)" category="necklaces" >כל השרשראות  </button></li> -->
-                            <li><button class="btn btn-light" onclick="presentProductByCategory('necklaces', 'all')">כל
-                                    השרשראות </button></li>
-                            <li><button class="btn btn-light"
-                                    onclick="presentProductByCategory('necklaces', 'silver')">שרשראות כסף </button></li>
-                            <li><button class="btn btn-light"
-                                    onclick="presentProductByCategory('necklaces', 'gold')">שרשראות זהב </button></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <li style="float: right;"><button class="btn btn-light"> צמידים </button></li>
-                    <div class="dropdown-content">
-                        <ul id="dropdownmenu">
-                            <li><button class="btn btn-light" onclick="presentProductByCategory('bracelets', 'all')">כל
-                                    הצמידים </button></li>
-                            <li><button class="btn btn-light" onclick="presentProductByCategory('bracelets', 'silver')">
-                                    צמידים כסף</button></li>
-                            <li><button class="btn btn-light" onclick="presentProductByCategory('bracelets', 'gold')">
-                                    צמידים זהב</button></li>
-                        </ul>
-                    </div>
-                </div>
+                <% } else { %>
 
-
-                <div class="dropdown">
-                    <li style="float: right;"><button class="btn btn-light"> טבעות </button></li>
-                    <div class="dropdown-content">
-                        <ul id="dropdownmenu">
-                            <li><button class="btn btn-light" onclick="presentProductByCategory('rings', 'all')">
-                                </button>כל הטבעות</li>
-                            <li><button class="btn btn-light" onclick="presentProductByCategory('rings', 'silver')">
-                                    טבעות כסף</button></li>
-
-                            <!-- <li><button class="btn btn-light" onclick="presentProductByCategory('rings', 'silver')"> טבעות כסף</button></li> -->
-                            <li><button class="btn btn-light" onclick="presentProductByCategory('rings', 'gold')">
-                                    טבעות זהב</button></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <li style="float: right;"><button class="btn btn-light">תכשיטי כסף אמיתי </button></li>
-                    <div class="dropdown-content">
-                        <ul id="dropdownmenu">
-                            <li><button class="btn btn-light"> טבעות </button></li>
-                            <li><button class="btn btn-light"> שרשראות</button></li>
-                            <li><button class="btn btn-light"> צמידים</button></li>
-                            <li><button class="btn btn-light"> עגילים</button></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <li style="float: right;"><button class="btn btn-light">תכשיטי זהב אמיתי </button></li>
-                    <div class="dropdown-content">
-                        <ul id="dropdownmenu">
-                            <li><button class="btn btn-light"> טבעות </button></li>
-                            <li><button class="btn btn-light"> שרשראות</button></li>
-                            <li><button class="btn btn-light"> צמידים</button></li>
-                            <li><button class="btn btn-light"> עגילים</button></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <% if(username==="admin" ) { %>
-                        <li style="float: right;"><button class="btn btn-light"> משתמשים </button></li>
-                        <% } %>
-                </div>
-            </ul>
+                    <%}%>
         </div>
+
+
+
         <div class="commercials">
             <a href="products"><img width="750" height="750" src="../public/img/new_in_Site.webp"
                     class="attachment-large size-large entered lazyloaded" alt="תכשיטים חדשים"></a>
@@ -214,21 +161,6 @@
                 מחירים נוחים
             </li>
         </footer>
-        <script>
-            var connection = new WebSocket('ws://127.0.0.1:3001');
-            var users = localStorage.getItem("usersCounter")
-            connection.onopen = function () {
-                console.log('connection is open');
-
-            };
-            connection.onerror = function (error) {
-                console.log('connection error');
-            };
-            connection.onmessage = function (message) {
-                console.log(message.data);
-                $('.userNum').text("משתמשים מחוברים: " + message.data);
-            };
-        </script>
 </body>
 
 </html>
