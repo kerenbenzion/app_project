@@ -15,7 +15,21 @@ async function getOrderDates() {
           }
         }
       ]);
-    console.log(products)
     return products;
 }
-module.exports = { getPrices, getOrderDates }
+async function getMaxOrder() {
+    const maxproducts = await Order.aggregate(   [
+        {
+          $group: {
+             _id: { $dateToString: { format: "%m", date: "$date" } },
+             count:{$count: {} }
+          },
+        },
+        {
+            $sort : { count: -1 }
+        },
+      ]);
+    console.log(maxproducts)
+    return maxproducts;
+}
+module.exports = { getPrices, getOrderDates, getMaxOrder }
