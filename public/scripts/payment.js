@@ -11,4 +11,5 @@ for (let i = 0; i < cart.length; i++) {
     var current_product = cart[i].split('&')
     boxElts[i].innerHTML = "<img src='" + current_product[2] + "' alt='image'>";
 }
+
 console.log(window.localStorage.getItem('cart'))
