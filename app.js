@@ -25,10 +25,10 @@ app.use('/public', express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 var usersCounter = 0;
- 
+
 var server = http.createServer(app).listen(3001);
- 
-var wsServer = new ws({httpServer: server});
+
+var wsServer = new ws({ httpServer: server });
 
 wsServer.on('request', function (request) {
     usersCounter++;
@@ -36,9 +36,9 @@ wsServer.on('request', function (request) {
     console.log(usersCounter);
 
     var connection = request.accept(null, request.origin);
- 
-    connection.sendUTF(usersCounter);    
-    
+
+    connection.sendUTF(usersCounter);
+
     connection.on('close', function (connection) {
         usersCounter--;
         console.log('client disconnected');

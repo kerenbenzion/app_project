@@ -2,7 +2,7 @@ const { resetWatchers } = require("nodemon/lib/monitor/watch");
 const Product = require("../models/Product");
 function form(req, res) {
     Product.find({}).then(results => {
-        res.render('../views/all_products', { products: results });
+        res.render('../views/all_products', { products: results, username: req.session.username });
     })
 
 }
@@ -50,6 +50,7 @@ function deleteproduct(req, res) {
     Product.findByIdAndDelete(req.params.id).then(() => res.send('success')).catch(() => res.send('Failure'));
 }
 function updateproduct(req, res) {
+    console.log(req.session)
     Product.findByIdAndUpdate(req.params.id, req.body,
         function (err, r) {
             if (err) {
