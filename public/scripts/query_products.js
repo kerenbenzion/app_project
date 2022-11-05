@@ -1,4 +1,4 @@
-function presentProductByCategory(category, color){
-    window.location.href = "/product-category?category="+category+"&color=" +color;
+function presentProductByCategory(category, color, maxPrice){
+    window.location.href = "/product-category?category="+category+"&color=" +color+"&maxPrice=" + maxPrice;
 
 }   

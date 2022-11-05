@@ -100,3 +100,7 @@ function presentproduct(d) {
   var id = d.getAttribute("product_id")
   window.location.href = "/single-product?id=" + id;
 }
+
+function checkValues(){
+  
+}

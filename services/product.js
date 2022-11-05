@@ -5,12 +5,18 @@ async function getSingleProduct(id){
     return returnedSingleProduct = await Product.findById(id);
 }
 
-async function getCategoryProducts(category, color){
+async function getCategoryProducts(category, color, maxPrice){
+    maxPrice = parseInt(maxPrice);
+
+    console.log(maxPrice.type)
+
     if(color == "all"){
-        return returnedProducts = await Product.find({type : category});
+        returnedProducts = await Product.find({type : category , price : { $lt : maxPrice}})
+        console.log(returnedProducts);
+        return returnedProducts = await Product.find({type : category , price : { $lte : maxPrice}});
     }
     else{
-        return returnedProducts = await Product.find({type : category, color : color});
+        return returnedProducts = await Product.find({type : category, color : color , price : { $lte : maxPrice}});
     }
 }
 
