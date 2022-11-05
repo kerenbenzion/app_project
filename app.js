@@ -29,6 +29,7 @@ app.use('/', require('./routes/single-product-router'));
 app.use('/', require('./routes/homepage'));
 app.use('/', require('./routes/product-category-router'));
 app.use('/', require('./routes/sort-products-router'));
+app.use('/', require('./routes/information-router'));
 
  
 app.get('*', function (req, res) {
