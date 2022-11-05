@@ -57,12 +57,13 @@ function AddToBasket(d) {
   var id = d.getAttribute("productid")
   var preview_img = d.getAttribute("preview_img")
   var price = d.getAttribute("price")
-  SaveDataToLocalStorage(id, price, preview_img)
+  var name = d.getAttribute("name")
+  SaveDataToLocalStorage(id, price, preview_img, name)
 }
 
-function SaveDataToLocalStorage(id, price, preview_img) {
+function SaveDataToLocalStorage(id, price, preview_img, name) {
   var a;
-  data = id + "&" + price + "&" + preview_img
+  data = id + "&" + price + "&" + preview_img + "&" + name
   console.log(data)
   // Parse the serialized data back into an aray of objects
   if (window.localStorage.getItem('cart') == null) {
