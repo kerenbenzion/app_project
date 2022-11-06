@@ -15,18 +15,7 @@
   <div class="row p-5">
     <!-- swap images -->
     <div id="myCarousel" class="carousel slide col-5" data-ride="carousel">
-<<<<<<< HEAD
-      
-=======
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="active" src=<%=singleProduct.preview_img%>>
-        </div>
-        <div class="carousel-item">
-          <img class="" src=<%=singleProduct.hover_img%>>
-        </div>
-      </div>
->>>>>>> 2d2b521 (cart)
+
       <!-- errows buttons -->
       <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"
         onclick="$('#myCarousel').carousel('prev')">
@@ -41,37 +30,14 @@
     </div>
 
     <!-- single product information -->
-<<<<<<< HEAD
-    <div class="product-info col p-5" >
-      <div id="product_info"></div>
-=======
     <div class="product-info col p-5">
-      <aside>
-        <h2>
-          <%=singleProduct.name%>
-        </h2>
-        <h3>
-          <%=singleProduct.price%> ₪
-        </h3>
-        <p>
-          <%=singleProduct.description%>
-        </p>
-      </aside>
-
->>>>>>> 2d2b521 (cart)
+      <div id="product_info"></div>
       <!-- Order information -->
       <div class="row pt-4">
         <p class="col-2">סוג ציפוי</p>
         <select class="form-select col" aria-label="Default select example" id="color_option">
           <option selected>בחירת אפשרות</option>
-<<<<<<< HEAD
-          
-=======
-          <% for(var i=0; i<singleProduct.color.length; i++) {%>
-            <option value=<%=i+1%>><%=singleProduct.color[i]%>
-            </option>
-            <%}%>
->>>>>>> 2d2b521 (cart)
+
         </select>
       </div>
 
@@ -80,22 +46,12 @@
         <p class="col-2">בחירת מידה</p>
         <select class="form-select col" aria-label="Default select example" id="size_option">
           <option selected>בחירת אפשרות</option>
-<<<<<<< HEAD
-          
-=======
-          <% for(var i=0; i<singleProduct.size.length; i++) {%>
-            <option value=<%=i+1%>><%=singleProduct.size[i]%>
-            </option>
-            <%}%>
->>>>>>> 2d2b521 (cart)
+
         </select>
       </div>
 
       <div class="pt-4">
-        <button type="button" class="btn btn-dark" onclick=AddToBasket(this) productid="<%=singleProduct.id%>"
-          price="<%=singleProduct.price%>" preview_img="<%=singleProduct.preview_img%>"
-          name="<%=singleProduct.name%>">הוסיפי
-          לסל הקניות +</button>
+        <button type="button" class="btn btn-dark">הוסיפי לסל הקניות +</button>
       </div>
 
     </div>
@@ -135,14 +91,8 @@
           <b>חומרים</b><br>
           המוצר עשוי מסוגים שונים של מתכות אל-חלד.<br>
           <b>מידות</b><br>
-<<<<<<< HEAD
         <p id="size">
         </p>
-=======
-          <% for(var i=0; i<singleProduct.size.length; i++) {%>
-            <%=singleProduct.size[i]%>
-              <%}%><br>
->>>>>>> 2d2b521 (cart)
 
         </p>
       </div>
@@ -202,7 +152,6 @@
     integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
     crossorigin="anonymous"></script>
   <script src="../public/scripts/single-product.js"></script>
-<<<<<<< HEAD
 
   <script type="text/html" id="imgs_template">
     <div id="myCarousel" class="carousel slide col-5" data-ride="carousel">
@@ -236,8 +185,6 @@
       <option value='{index}'>{color}</option>
   </script>
 
-=======
->>>>>>> 2d2b521 (cart)
 </body>
 
 </html>

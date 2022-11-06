@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-$('.nav-item a').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-})
-
 //On Page Load
 $(() => {
   $.ajax({
@@ -45,8 +39,6 @@ $(() => {
   })
 })
 
-
-=======
 $('.nav-item a').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
@@ -77,4 +69,3 @@ function SaveDataToLocalStorage(id, price, preview_img, name) {
   // Re-serialize the array back into a string and store it in localStorage
   window.localStorage.setItem('cart', a.join('|'));
 }
->>>>>>> 2d2b521 (cart)
