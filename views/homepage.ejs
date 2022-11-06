@@ -80,12 +80,12 @@
             </div>
 
 
-            <% if(username!=null ) { %>
+            <% if(username=='admin' ) { %>
                 <div class="dropdown">
                     <button class="dropbtn btn btn-light">פעולות מנהל</button>
                     <div class="dropdown-content">
                         <a href="/graph">סטטיסטיקות</a>
-                        <a href="">ניהול משתמשים</a>
+                        <a href="/users">ניהול משתמשים</a>
                     </div>
                 </div>
                 <% } else { %>
