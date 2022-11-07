@@ -90,8 +90,20 @@
 
                     <%}%>
         </div>
-        <div class="users_list">
 
+        <div class="users">
+            <button onclick="presentuserlist()" class="btn btn-light">
+                הצג רשימת משתמשים
+            </button>
+            <div class="users_list">
+            </div>
+            <form>
+                <input type="username" name="username" placeholder="Username">
+                <button onclick="deleteuser()" class="submit btn btn-light">מחק משתמש</button>
+            </form>
+
+            <div class="users_list">
+            </div>
         </div>
 
         <footer class="mcols bottom_footer">

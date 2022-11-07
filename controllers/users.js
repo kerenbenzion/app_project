@@ -9,8 +9,11 @@ function getusers(req, res) {
         res.json(results)
     });
 }
-
+function deleteuser(req, res) {
+    Users.findByIdAndDelete(req.params.id).then(() => res.send('success')).catch(() => res.send('Failure'));
+}
 module.exports = {
     getuserspage,
-    getusers
+    getusers,
+    deleteuser
 }
