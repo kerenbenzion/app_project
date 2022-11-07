@@ -1,4 +1,3 @@
-const { resetWatchers } = require("nodemon/lib/monitor/watch");
 const Users = require("../models/User");
 function getuserspage(req, res) {
     res.render('../views/users', { username: req.session.username });
@@ -10,10 +9,21 @@ function getusers(req, res) {
     });
 }
 function deleteuser(req, res) {
-    Users.findByIdAndDelete(req.params.id).then(() => res.send('success')).catch(() => res.send('Failure'));
+    let id = req.params.id
+
+    Users.findByIdAndDelete(id, function (err, response) {
+        console.log(response)
+        if (response != null) {
+            res.send("success")
+        }
+        else {
+            res.status(400).send("user not found in db")
+        }
+    })
+
 }
 module.exports = {
     getuserspage,
-    getusers,
-    deleteuser
+    deleteuser,
+    getusers
 }

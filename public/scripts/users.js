@@ -15,16 +15,18 @@ function presentuserlist() {
 }
 
 function deleteuser() {
-    var username = document.getElementsByName('username')[0].value
-    if (username != null) {
-        var urlCall = "/users/deleteuser/" + username
-        $.ajax({
-            url: urlCall,
-            type: 'DELETE',
-            success: function (result) {
-                window.location.href = "/products";
-            }
-        });
-    }
+    let username = document.getElementsByName('username')[0].value
+    let url = "http://localhost:3001/users/" + username
+
+    $.ajax({
+        url: url,
+        type: 'POST',
+        success: function (res) {
+            // alert(JSON.stringify(res));
+        },
+        error: function () {
+            alert("user does not exist")
+        }
+    });
 
 }
