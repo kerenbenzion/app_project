@@ -11,7 +11,7 @@ async function getCategoryProducts(category, color, maxPrice){
     console.log(maxPrice.type)
 
     if(color == "all"){
-        returnedProducts = await Product.find({type : category , price : { $lt : maxPrice}})
+        returnedProducts = await Product.find({type : category , price : { $lte : maxPrice}})
         console.log(returnedProducts);
         return returnedProducts = await Product.find({type : category , price : { $lte : maxPrice}});
     }

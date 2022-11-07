@@ -280,3 +280,8 @@ body {
 .open-button:hover {
     opacity: 1;
 }
+
+#error{
+    color: red;
+    font-weight: bold;
+}

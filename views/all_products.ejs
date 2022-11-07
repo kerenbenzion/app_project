@@ -96,7 +96,8 @@
                 </div>
 
                 <div dir="rtl">
-                    <form action="product-category" class="form-inline">
+                    <!-- <form action="product-category" class="form-inline" id="filter-form"> -->
+                    <div class="form-inline" id="filter-form">
                         <div>
                             חפשי מה מעניין אותך לראות מתוך כל המוצרים
                         </div>
@@ -105,35 +106,37 @@
                             <input type="number" placeholder="מחיר מקסימלי" name="maxPrice" id="inp_maxPrice"><br>
                             <!-- Types -->
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="category" id="inlineRadio1" value="earrings">
-                                <label class="form-check-label" for="inlineRadio1">עגילים</label>
+                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-earrings" value="earrings">
+                                <label class="form-check-label" for="inlineRadio-earrings">עגילים</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="category" id="inlineRadio2" value="necklaces">
-                                <label class="form-check-label" for="inlineRadio2">שרשראות</label>
+                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-necklaces" value="necklaces">
+                                <label class="form-check-label" for="inlineRadio-necklaces">שרשראות</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="category" id="inlineRadio3" value="bracelets">
-                                <label class="form-check-label" for="inlineRadio2">צמידים</label>
+                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-bracelets" value="bracelets">
+                                <label class="form-check-label" for="inlineRadio-bracelets">צמידים</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="category" id="inlineRadio4" value="rings">
-                                <label class="form-check-label" for="inlineRadio3">טבעות</label>
+                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-rings" value="rings">
+                                <label class="form-check-label" for="inlineRadio-rings">טבעות</label>
                               </div><br>
                             
                               <!-- Colors -->
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="color" id="inlineRadio1" value="gold">
-                                <label class="form-check-label" for="inlineRadio1">זהב</label>
+                                <input class="form-check-input" type="radio" name="color" id="inlineRadio-gold" value="gold">
+                                <label class="form-check-label" for="inlineRadio-gold">זהב</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="color" id="inlineRadio2" value="silver">
-                                <label class="form-check-label" for="inlineRadio2">כסף</label>
+                                <input class="form-check-input" type="radio" name="color" id="inlineRadio-silver" value="silver">
+                                <label class="form-check-label" for="inlineRadio-silver">כסף</label>
                               </div>
                               <br>
-                            <button class="btn btn-dark" type="submit">סינון</button>
+                              <div id="error"></div>
+                            <!-- <button class="btn btn-dark" id="filter-btn" type="button">סינון</button> -->
+                            <button class="btn btn-dark" id="filter-btn" onclick="validateBeforeSubmit()">סינון</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div id="products">
                     <%for (var i=0; i < products.length; i++) {%>
