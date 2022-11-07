@@ -35,7 +35,6 @@ async function login(req, res) {
 
 async function register(req, res) {
   const { username, password } = req.body
-
   try {
     await loginService.register(username, password)
     req.session.username = username

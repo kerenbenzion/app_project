@@ -1,4 +1,5 @@
 //On Page Load
+var currnet_product;
 $(() => {
   $.ajax({
     url: '/info/single-product' + window.location.search
@@ -6,8 +7,7 @@ $(() => {
     let img_template = $('#imgs_template').html();
     let product_info_template = $('#product_info_template').html();
     let size_template = $('#size_template').html();
-
-
+    currnet_product = res
     product_info_template
     for (const key in res) {
       const replaceThat = '{' + key + '}';
@@ -45,11 +45,12 @@ $('.nav-item a').click(function (e) {
 })
 
 
-function AddToBasket(d) {
-  var id = d.getAttribute("productid")
-  var preview_img = d.getAttribute("preview_img")
-  var price = d.getAttribute("price")
-  var name = d.getAttribute("name")
+function AddToBasket() {
+  console.log(currnet_product)
+  var id = currnet_product['_id']
+  var preview_img = currnet_product['preview_img']
+  var price = currnet_product['price']
+  var name = currnet_product['name']
   SaveDataToLocalStorage(id, price, preview_img, name)
 }
 
