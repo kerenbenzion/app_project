@@ -1,10 +1,3 @@
-// $.(() => {
-//     $('#inp_search_productName').keyup(function(){
-//         $.ajax({});
-//     })
-// })
-
-
 function Sort(byWhat){
     if(byWhat === "name")
         sortProductsByName();

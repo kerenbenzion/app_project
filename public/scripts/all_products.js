@@ -131,14 +131,14 @@ function validateBeforeSubmit() {
 }
 
 function productCategory(category, color, maxPrice) {
-  window.location.href = "/product-category?category=" + category + "&color=" + color + "&maxPrice=" + maxPrice;
+  queryParams = "/product-category?category=" + category + "&color=" + color + "&maxPrice=" + maxPrice;
+  productCategoryAjax(queryParams);
 }
 
-$(() => {
+function productCategoryAjax(queryParams){
   $.ajax({
-    url: '/info/product-category' + window.location.search
+    url: '/info' + queryParams
   }).done(function (res) {
-    console.log(res);
     $('#products').html('');
     for (let index = 0; index < res.length; index++) {
       const element = res[index];
@@ -151,4 +151,8 @@ $(() => {
       $('#products').append(search_template);
     }
   })
+}
+
+$(() => {
+  productCategoryAjax('/product-category' + window.location.search);
 })
