@@ -1,9 +1,11 @@
 const { resetWatchers } = require("nodemon/lib/monitor/watch");
 const Product = require("../models/Product");
 function form(req, res) {
-    Product.find({}).then(results => {
-        res.render('../views/all_products', { products: results });
-    })
+    // Product.find({}).then(results => {
+    //     res.render('../views/all_products', { products: results });
+    // })
+        res.render('../views/all_products', {});
+
 
 }
 function add_product(req, res) {
