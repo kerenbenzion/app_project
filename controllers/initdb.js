@@ -1,15 +1,15 @@
-const res = require("express/lib/response");
 const { resetWatchers } = require("nodemon/lib/monitor/watch");
 const Product = require("../models/Product");
 const login = require("../services/login");
 const login_model = require("../models/User");
-const order = require('../models/Order');
 const Order = require("../models/Order");
+const Branch = require("../models/Branch")
 
 async function initdb(req, res) {
     await Product.deleteMany({})
     await Order.deleteMany({})
     await login_model.deleteMany({})
+    await Branch.deleteMany({})
 
 
     createProduct(120, 'עגילי פרפר', ['gold'], 'https://giolli.co.il/wp-content/uploads/2020/05/5143.jpg', 'https://giolli.co.il/wp-content/uploads/2020/09/E11871G-1.jpg', 'earrings', 'עגילים יפייפים בצורת פרפר', ['S', 'M', 'L'])
@@ -82,9 +82,11 @@ async function initdb(req, res) {
         createorder(arr_products, date, user);
     }
 
-    orders = await Order.find({})
+    createBranch('BNK Tel aviv',  'מנחם בגין 150 תל אביב')
+    createBranch('BNK Ness Ziona', 'וייצמן 25 נס ציונה')
+    createBranch('BNK Rehovot','קניון רחובות')
+    createBranch('BNK Herzelia','רמת ים הרצליה')
 
-    // console.log(results.length)
     res.send('updated')
 }
 
@@ -92,7 +94,13 @@ function randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }
 
-
+function createBranch(name, address) {
+    b = new Branch({
+        name:name,
+        address: address
+    })
+    b.save()
+}
 function createProduct(price, name, color, preview_img, hover_img, type, description, size) {
     const product = new Product({
         price: price,
