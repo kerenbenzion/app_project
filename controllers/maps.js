@@ -1,7 +1,7 @@
 const Branch = require("../models/Branch")
 
-function showmaps(req,res){
-    res.render('../views/maps');
+function showmaps(req, res) {
+    res.render('../views/maps', { username: req.session.username });
 }
 
 function getbranches(req, res) {
@@ -64,7 +64,7 @@ function getbranches(req, res) {
 //         window.searchManager.geocode(searchRequest);
 //     }
 // }
-module.exports={
+module.exports = {
     showmaps,
     getbranches
     // GetMap,
