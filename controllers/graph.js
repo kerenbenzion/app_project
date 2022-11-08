@@ -9,7 +9,7 @@ async function getMaxOrder(req, res) {
     if (req.session.username != "admin") {
         res.status(404).send("page does not exists")
     } else {
-        res.render('../views/graphs', { maxOrder: maxOrderResult });
+        res.render('../views/graphs', { maxOrder: maxOrderResult, username: req.session.username });
     }
 
 }
