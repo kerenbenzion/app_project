@@ -57,16 +57,16 @@ async function initdb(req, res) {
     createProduct(160, 'טבעת מונקי בולס', ['gold', 'silver'], 'https://shanijacobi.co.il/wp-content/uploads/2015/02/monkey-balls-ring-silver-top-600x600.jpg', 'https://shanijacobi.co.il/wp-content/uploads/2015/02/monkey-balls-ring-gold-600x600.jpg', 'rings', 'טבעת מונקי בולס – טבעת אורבנית מגניבה, עשויה מפליז בציפוי איכותי של זהב 24 קראט או ציפוי כסף טהור. הטבעת מתכווננת לפי גודל האצבע.', ['S', 'M'])
     createProduct(100, 'טבעת ליה', ['gold'], 'https://shanijacobi.co.il/wp-content/uploads/2020/02/rings-600x600.jpg', 'https://shanijacobi.co.il/wp-content/uploads/2020/02/lya-ring-gold-600x600.jpg', 'rings', 'טבעת ליה היא טבעת בצורת הפטגון (משובע) עם קטע מיוחד של עיטורים. טבעת מושלמת ומלאת סטייל, פתוחה בקצה ומתאימה למגוון רחב של אצבעות.', ['S', 'M'])
 
-    login.register('user1', '1234', 'no')
-    login.register('user2', '1234', 'no')
-    login.register('user3', '1234', 'no')
-    login.register('user4', '1234', 'no')
-    login.register('user5', '1234', 'no')
-    login.register('user6', '1234', 'no')
-    login.register('user7', '1234', 'no')
-    login.register('user8', '1234', 'no')
-    login.register('user9', '1234', 'no')
-    login.register('admin', '1234', 'yes')
+    login.register('user1', '1234', '0525341648', 'יהודית 18 תל אביב', 'no')
+    login.register('user2', '1234', '0525341648', 'יהודית 18 תל אביב', 'no')
+    login.register('user3', '1234', '0525341648', 'יהודית 18 תל אביב', 'no')
+    login.register('user4', '1234', '0525341648', 'יהודית 18 תל אביב', 'no')
+    login.register('user5', '1234', '0525341648', 'יהודית 18 תל אביב', 'no')
+    login.register('user6', '1234', '0525341648', 'יהודית 18 תל אביב', 'no')
+    login.register('user7', '1234', '0525341648', 'יהודית 18 תל אביב', 'no')
+    login.register('user8', '1234', '0525341648', 'יהודית 18 תל אביב', 'no')
+    login.register('user9', '1234', '0525341648', 'יהודית 18 תל אביב', 'no')
+    login.register('admin', '1234', '0525341648', 'יהודית 18 תל אביב', 'yes')
 
     var results = await Product.find({}, { "_id": 1 })
     for (let num_orders = 0; num_orders < 10; num_orders++) {
@@ -82,10 +82,10 @@ async function initdb(req, res) {
         createorder(arr_products, date, user);
     }
 
-    createBranch('BNK Tel aviv',  'מנחם בגין 150 תל אביב')
+    createBranch('BNK Tel aviv', 'מנחם בגין 150 תל אביב')
     createBranch('BNK Ness Ziona', 'וייצמן 25 נס ציונה')
-    createBranch('BNK Rehovot','קניון רחובות')
-    createBranch('BNK Herzelia','רמת ים הרצליה')
+    createBranch('BNK Rehovot', 'קניון רחובות')
+    createBranch('BNK Herzelia', 'רמת ים הרצליה')
 
     res.send('updated')
 }
@@ -96,7 +96,7 @@ function randomDate(start, end) {
 
 function createBranch(name, address) {
     b = new Branch({
-        name:name,
+        name: name,
         address: address
     })
     b.save()
