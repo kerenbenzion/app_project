@@ -7,7 +7,7 @@ body {
     text-align: center;
     background-color: #faf9f8;
 }
-
+/* 
 .mcols {
     column-count: 5;
     column-gap: 40px;
@@ -25,7 +25,7 @@ body {
 .mcols li {
     border-top: lightgray;
     list-style: none;
-}
+} */
 
 .header {
     width: 100%;
@@ -36,12 +36,12 @@ body {
     text-align: center;
 }
 
-.bottom_footer {
+/* .bottom_footer {
     margin-top: 10cm;
     flex-shrink: 0;
     height: 40px;
     width: 100%;
-}
+} */
 
 #optionsbar {
     width: 100%;
