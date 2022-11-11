@@ -105,3 +105,59 @@ function presentproduct(d) {
   var id = d.getAttribute("product_id")
   window.location.href = "/single-product?id=" + id;
 }
+
+function validateBeforeSubmit() {
+  $('#error').text("");
+  let numOfStatements = 0;
+  const maxPrice = $('#inp_maxPrice').val();
+  const category = $("input[name='category']:checked").val();
+  const color = $("input[name='color']:checked").val();
+  if (maxPrice == '') {
+    $('#error').append("אנא בחרי מחיר מקסימלי <br>");
+    numOfStatements++;
+  }
+  if (parseInt(maxPrice) <= 0) {
+    $('#error').append("על המחיר המקסימלי להיות חיובי <br>");
+    numOfStatements++;
+  }
+  if (category === undefined) {
+    $('#error').append("אנא בחרי קטגוריה <br>");
+    numOfStatements++
+  }
+  if (color === undefined) {
+    $('#error').append("אנא בחרי צבע <br>");
+    numOfStatements++;
+  }
+
+  //No errors
+  if (numOfStatements == 0) {
+    productCategory(category, color, maxPrice);
+  }
+}
+
+function productCategory(category, color, maxPrice) {
+  queryParams = "/product-category?category=" + category + "&color=" + color + "&maxPrice=" + maxPrice;
+  productCategoryAjax(queryParams);
+}
+
+function productCategoryAjax(queryParams){
+  $.ajax({
+    url: '/info' + queryParams
+  }).done(function (res) {
+    $('#products').html('');
+    for (let index = 0; index < res.length; index++) {
+      const element = res[index];
+      let search_template = $('#search_template').html();
+
+      for (const key in element) {
+        search_template = search_template.replaceAll('{' + key + '}', element[key]);
+      }
+
+      $('#products').append(search_template);
+    }
+  })
+}
+
+$(() => {
+  productCategoryAjax('/product-category' + window.location.search);
+})
