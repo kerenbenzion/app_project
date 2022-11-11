@@ -13,7 +13,7 @@ function postfacebook(req,res){
 
 }
 function facebookForm(req,res){
-    res.render("facebook",{})
+    res.render("facebook",{username: req.session.username})
 }
 
 module.exports={
