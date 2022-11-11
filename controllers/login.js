@@ -7,8 +7,8 @@ function isLoggedIn(req, res, next) {
     res.redirect('/login')
 }
 
-function foo(req, res) {  
-  res.render("foo", {username: req.session.username})
+function foo(req, res) {
+  res.render("../views/homepage", { username: req.session.username })
 }
 
 function loginForm(req, res) { res.render("login", {}) }
@@ -37,14 +37,14 @@ async function register(req, res) {
   const { username, password } = req.body
 
   try {
-    await loginService.register(username, password)    
+    await loginService.register(username, password)
     req.session.username = username
     res.redirect('/login')
   }
-  catch (e) { 
+  catch (e) {
     console.log(e)
     res.redirect('/register?error=1')
-  }    
+  }
 }
 
 module.exports = {

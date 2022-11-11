@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Product = new mongoose.Schema({
-  _id: { type: mongoose.ObjectId, auto: true},
+  _id: { type: mongoose.ObjectId, auto: true },
   color: {
     type: [String],
     required: true,
@@ -34,7 +34,7 @@ const Product = new mongoose.Schema({
     type: String,
     required: true,
   },
-  
+
 });
 
 module.exports = mongoose.model("Product", Product);

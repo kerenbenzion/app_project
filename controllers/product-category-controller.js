@@ -8,7 +8,7 @@ function getCategoryProducts(req, res) {
         //when there will be full ajax in product category -- this will not be needed
             res.render("homepage.ejs");
         else
-            res.render("all_products.ejs",{products : r});
+            res.render("all_products.ejs", { products: r, username: req.session.username });
     });
 }
 

@@ -21,10 +21,15 @@ function openForm(d) {
 function openFormadd() {
   document.getElementsByClassName("form-popup-add")[0].style.display = "block"
 }
+
+
 function closeFormAdd() {
   document.getElementsByClassName("form-popup-add")[0].style.display = "none"
 }
 
+function openLogin() {
+  window.location.href = "/login"
+}
 
 function additem(d) {
   var urlCall = "/products/add_product/"
