@@ -6,6 +6,9 @@ function form(req, res) {
     })
 
 }
+function add_product_page(req, res) {
+    res.render('../views/add_product.ejs', { username: req.session.username })
+}
 function add_product(req, res) {
     console.log(req.body);
     var name = req.body.name;
@@ -66,5 +69,6 @@ module.exports = {
     get_products,
     getByname,
     deleteproduct,
-    updateproduct
+    updateproduct,
+    add_product_page
 }

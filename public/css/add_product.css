@@ -1,0 +1,39 @@
+body {
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  font-family: arial;
+  position: relative;
+  text-align: center;
+  background-color: #faf9f8;
+}
+
+.content {
+  text-align: center;
+}
+
+.form-popup {
+  margin: 0 auto;
+  width: 250px;
+  border: 5px solid #efeae6;
+  border-radius: 5px;
+  text-align: center;
+  direction: rtl;
+}
+
+
+form>div {
+  padding: 10px;
+  margin: 5px;
+}
+
+.submit-button {
+  color: black;
+  background-color: #efeae6;
+  padding: 5px;
+  width: 100px;
+  margin: 5px;
+  border-color: gray;
+  border-radius: 5px;
+  text-shadow: 0.5px 0.5px gray;
+}

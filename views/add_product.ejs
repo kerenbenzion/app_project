@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<title>BNK Jewlery</title>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" type="image/x-icon" href="../public/img/rsz_logotab.png" />ד
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../public/css/add_product.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/homepage.css" type="text/css">
+    <script src="../public/scripts/query_products.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="header">
+        <p>♡ שליח עד הבית חינם בקנייה של 249 ש"ח ♡</p>
+
+        <div id="optionsbar">
+            <ul id="optionsmenu1">
+                <li><button class="btn btn-light">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-bag-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                        </svg></button>
+                </li>
+                <li><button class="btn btn-light"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                        </svg> </button></li>
+
+                <li>
+                    <% if(username!=null ) { %>
+                        <button class="btn btn-light">שלום <%=username%></button>
+                        <% } else { %>
+                            <button class="btn btn-light" onclick="openLogin()">התחבר/י</button>
+                            <%}%>
+                </li>
+                <li>
+                    <div class="logo"><a href="/"><img src="../public/logo.png"
+                                style="height: 2.2cm; width: 2cm;margin-left: 17cm; margin-right: 19cm;"></a></div>
+                </li>
+            </ul>
+        </div>
+        <div class="menu">
+            <div class="dropdown">
+                <button class="dropbtn btn btn-light">שרשראות</button>
+                <div class="dropdown-content">
+                    <a onclick="presentProductByCategory('necklaces', 'all')">כל השרשראות</a>
+                    <a onclick="presentProductByCategory('necklaces', 'silver')">שרשראות כסף</a>
+                    <a onclick="presentProductByCategory('necklaces', 'gold')">שרשראות זהב</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn btn btn-light">עגילים</button>
+                <div class="dropdown-content">
+                    <a onclick="presentProductByCategory('earrings', 'all')">כל העגילים</a>
+                    <a onclick="presentProductByCategory('earrings', 'silver')">עגילי כסף</a>
+                    <a onclick="presentProductByCategory('earrings', 'gold')">עגילי זהב</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn btn btn-light">צמידים</button>
+                <div class="dropdown-content">
+                    <a onclick="presentProductByCategory('bracelets', 'all')">כל הצמידים</a>
+                    <a onclick="presentProductByCategory('bracelets', 'silver')">צמידי כסף</a>
+                    <a onclick="presentProductByCategory('bracelets', 'gold')">צמידי זהב</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn btn btn-light">טבעות</button>
+                <div class="dropdown-content">
+                    <a onclick="presentProductByCategory('rings', 'all')">כל הטבעות</a>
+                    <a onclick="presentProductByCategory('rings', 'silver')">טבעות כסף</a>
+                    <a onclick="presentProductByCategory('rings', 'gold')">טבעות זהב</a>
+                </div>
+            </div>
+            <% if(username=='admin' ) { %>
+                <div class="dropdown">
+                    <button class="dropbtn btn btn-light">פעולות מנהל</button>
+                    <div class="dropdown-content">
+                        <a href="/graph">סטטיסטיקות</a>
+                        <a href="/users">ניהול משתמשים</a>
+                        <a href="/products/add_product">הוספת מוצר</a>
+                    </div>
+                    <% } else { %>
+
+                        <%}%>
+                </div>
+                <div class="form-popup">
+                    <form class="form-container">
+                        <h1>הוספת מוצר</h1>
+                        <p>בבקשה תמלא/י את המידע הבא כדי ליצור מוצר באתר</p>
+
+                        <label for="name"><b>שם</b></label>
+                        <input type="text" placeholder="שם המוצר" name="name" required>
+
+                        <label for="price"><b>מחיר(₪)</b></label>
+                        <input type="text" placeholder="מחיר" name="price" required>
+
+                        <label for="type"><b>סוג</b></label>
+                        <input type="text" placeholder="earrings/necklaces/bracelets/rings" name="type" required>
+
+                        <label for="description"><b>תיאור</b></label>
+                        <input type="text" placeholder="תיאור" name="description" required>
+
+                        <label for="size"><b>מידה</b></label>
+                        <input type="text" placeholder="S,M,L" name="size" required>
+
+                        <label for="color"><b>צבע</b></label>
+                        <input type="text" placeholder="color1,color2" name="color" required>
+
+                        <label for="preview_img"><b>תמונה לתצוגה</b></label>
+                        <input type="text" placeholder="url" name="preview_img" required>
+                        <label for="hover_img"><b> תמונה לתצוגה נוספת</b></label>
+                        <input type="text" placeholder="url" name="hover_img" required>
+
+                        <button type="button" class="btn submit-button" onclick="additem()">אשר</button>
+                    </form>
+                </div>
+</body>
+<script src="../public/scripts/add_product.js"></script>
+
+</html>
