@@ -17,7 +17,7 @@ async function login(username, password) {
     return user != null
 }
 
-async function register(username, password, isAdmin) {
+async function register(username, password, phonenumber, address, isAdmin) {
     const user = await User.findOne({ _id: username });
     if (user) {
         alert("Username already exists. Please try another username.")
@@ -25,7 +25,9 @@ async function register(username, password, isAdmin) {
     }
     const newuser = new User({
         _id: username,
-        password,
+        password: password,
+        phonenumber: phonenumber,
+        Address: address,
         isAdmin
     });
 

@@ -63,7 +63,7 @@ app.use('/', require('./routes/users'));
 app.use('/', require('./routes/maps'));
 
 app.get('*', function (req, res) {
-    res.status(404).send('404 Page not found');
+    res.render('404.ejs')
 });
 
 //app.listen(process.env.PORT)
