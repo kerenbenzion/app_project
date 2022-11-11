@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../public/css/homepage.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/users.css" type="text/css">
     <script src="../public/scripts/query_products.js"></script>
 
 </head>
@@ -94,16 +95,39 @@
         </div>
 
         <div class="users">
-            <button onclick="presentuserlist()" class="btn btn-light">
+            <button onclick="presentuserlist()" class="btn btn-light present">
                 הצג רשימת משתמשים
+            </button>
+            <button onclick="removeuserlist()" class="btn btn-light notpresent">
+                הפסק להציג רשימת משתמשים
             </button>
             <div class="users_list">
             </div>
 
+            <button onclick="deleteuser()" class="btn btn-light delete">מחק משתמש</button>
             <input type="username" name="username" placeholder="Username">
-            <button onclick="deleteuser()" class="btn btn-light">מחק משתמש</button>
 
-            <div class="users_list">
+            <button onclick="openFormedit()" class="btn btn-light delete">ערוך משתמש</button>
+            <input type="username" name="username_edit" placeholder="Username to edit">
+            <div class="form-popup" id="myForm">
+                <form class="form-container">
+                    <h1>עריכה</h1>
+
+                    <label for="name"><b>שם</b></label>
+                    <input type="text" value="" name="name" readonly>
+                    <label for="address"><b>כתובת</b></label>
+                    <input type="text" value="" name="address">
+                    <label for="phonenumber"><b>מספר טלפון</b></label>
+                    <input type="text" value="" name="phonenumber">
+
+                    <button type="button" class="btn" onclick="edititem()">אשר</button>
+                    <button type="button" class="btn cancel" onclick="closeFormedit()">סגור</button>
+                </form>
+            </div>
+
+
+            <div class="list">
+                <ul class="user_list"></ul>
             </div>
         </div>
 

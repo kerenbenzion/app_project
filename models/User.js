@@ -9,6 +9,12 @@ const User = new mongoose.Schema({
   isAdmin: {
     type: Boolean,
     default: false
+  },
+  Address: {
+    type: String
+  },
+  phonenumber: {
+    type: String
   }
 });
 
