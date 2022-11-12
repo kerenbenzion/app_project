@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="../public/css/header.css" type="text/css">
+<link rel="stylesheet" href="../public/css/homepage.css" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="../../public/scripts/load_footer_header.js"></script>
 
@@ -73,15 +74,16 @@
             </div>
 
 
-            <% if(username=='admin' ) { %>
-                <div class="dropdown">
-                    <button class="dropbtn btn btn-light">פעולות מנהל</button>
-                    <div class="dropdown-content">
-                        <a href="/graph">סטטיסטיקות</a>
-                        <a href="/users">ניהול משתמשים</a>
-                        <a href="/products/add_product">הוספת מוצר</a>
-                    </div>
-                    <% } else { %>
+        <% if(username=='admin' ) { %>
+            <div class="dropdown">
+                <button class="dropbtn btn btn-light">פעולות מנהל</button>
+                <div class="dropdown-content">
+                    <a href="/graph">סטטיסטיקות</a>
+                    <a href="/users">ניהול משתמשים</a>
+                    <a href="/facebook">פרסם בפייסבוק</a>
+                    <a href="/products/add_product">הוספת מוצר</a>
+                </div>
+                <% } else { %>
 
                         <%}%>
                 </div>
@@ -89,6 +91,7 @@
     </section>
 </div>
 
+<div class="row">&nbsp</div>
 <div class="row">&nbsp</div>
 <div class="row">&nbsp</div>
 <div class="row">&nbsp</div>
