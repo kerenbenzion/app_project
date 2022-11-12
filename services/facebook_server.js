@@ -1,11 +1,13 @@
 const axios = require('axios')
+const alert = require('alert')
 
 function publishPost(msg){
     const pageId='107964865443633'
-    const access_token = 'EABSw5NTZAolgBAKVP8wK7G7Xd4F3fR7PmKHMmiYgpdGnZCXPB1nzRUKW6joZAZAZBAqcp53UAtB6eoS0hE7PDSOQhPGGkUvjqnXSZB8eH8frTb4gcyQukhgpCZBKC5XMVyfYoPKFTezN4TvOq2NZAZC8WZAPjG8gME8F5YYdE2cGnGMWN1ZAZBk7TanDuNGBOjMbIvVP4sejaF8fL1gzhUjfiTee'
+    const access_token = 'EABSw5NTZAolgBAPklXxEy0jqdHuotDdALJzXU4Du4kRdYCEpoSAKZByyjsM33lrqs8kJkRb8Fqv9600QEpfr02F9OZBGL7VJ33KKdd2a0mmebkadZCEBXgEO7xG9ddQvfpJv5dDO3AAsRfS3Mp9GT3F5fY8rDASUEWulkOEesGecbOwbhUzi9mZAuLCuNpPdJsQdW0whcBZAc6RbZCVSVB8'
     axios.post(`https://graph.facebook.com/${pageId}/feed?message=${msg}&access_token=${access_token}`, null)
     .then(function (response){
         console.log(response)
+        alert("הפוסט פורסם בהצלחה")
     })
     .catch(function (error){
         console.log(error)
