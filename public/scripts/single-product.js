@@ -66,6 +66,8 @@ function AddToBasket() {
     var price = currnet_product['price']
     var name = currnet_product['name']
     SaveDataToLocalStorage(id, price, preview_img, name)
+    alert("המוצר התווסף בהצלחה");
+
   }
 
 }
