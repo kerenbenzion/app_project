@@ -34,9 +34,11 @@ async function login(req, res) {
 }
 
 async function register(req, res) {
-  const { username, password } = req.body
+
+  const { username, password, phonenumber, address, isAdmin } = req.body
+  console.log(req.body)
   try {
-    await loginService.register(username, password)
+    await loginService.register(username, password, phonenumber, address, isAdmin)
     req.session.username = username
     res.redirect('/login')
   }

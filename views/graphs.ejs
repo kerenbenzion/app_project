@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<title>BNK Jewlery</title>
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 
@@ -7,27 +8,40 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="../public/img/rsz_logotab.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../public/css/graph.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/homepage.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/footer_header.css">
+    <script src="../public/scripts/query_products.js"></script>
+    <script src="../public/scripts/all_products.js"></script>
+
+
 
 </head>
 
 <body>
-    <p class=userNum></p>
-    <div id="BNK_graph_price">
-        <h1>Graph prices</h1>
-    </div>
-    <div id="BNK_graph_order">
-        <h1>Graph orders</h1>
-    </div>
-    <div id="max">
-        <h4>Conclusions: </h4>
-        <p>The month <%=maxOrder[0]._id%> is when we had the highest number of orders which was <%=maxOrder[0].count%>
-        </p>
-    </div>
+    <%- include("./partials/header"); -%>
+    
+        <p class=userNum></p>
+        <div id="BNK_graph_price">
+            <h1>Graph prices</h1>
+        </div>
+        <div id="BNK_graph_order">
+            <h1>Graph orders</h1>
+        </div>
+        <div id="max">
+            <h4>Conclusions: </h4>
+            <p>The month <%=maxOrder[0]._id%> is when we had the highest number of orders which was
+                    <%=maxOrder[0].count%>
+            </p>
+        </div>
 </body>
+
+<div id="footer"></div>
+
 <script>
 
     // set the dimensions and margins of the graph
@@ -150,6 +164,9 @@
         $('.userNum').text("משתמשים מחוברים: " + message.data);
     };
 </script>
+
+<script src="../public/scripts/load_footer_header.js"></script>
+
 </body>
 
 </html>

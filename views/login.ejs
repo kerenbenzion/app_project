@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<title>BNK Jewlery</title>
 
 <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="../public/img/rsz_logotab.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -10,20 +12,29 @@
     <script>
         window.localStorage.clear()
     </script>
+    <link rel="stylesheet" href="../public/css/homepage.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/footer_header.css">
 
 </head>
 
 <body>
 
-    <div class="signup-form">
-        <form action="/login" method="post">
-            <h1>Sign In</h1>
-            <input type="username" name="username" placeholder="Username">
-            <input type="password" name="password" placeholder="Password">
-            <input type="submit" class="submit-button">
-        </form>
-        <a href="/register">Register</a>
-    </div>
+    <%- include("./partials/small_header"); -%>
+
+        <div class="signup-form">
+            <form action="/login" method="post">
+                <h1>התחבר/י</h1>
+                <input type="username" name="username" placeholder="Username"><br>
+                <input type="password" name="password" placeholder="Password"><br>
+                <input type="submit" class="btn btn-light" style="border: 2px solid black;margin-top:10px"
+                    value="התחבר/י">
+            </form>
+            <a href="/register">אם אין לך כבר משתמש באתר</a>
+        </div>
+
+        <div id="footer"></div>
+
+        <script src="../public/scripts/load_footer_header.js"></script>
 
 </body>
 

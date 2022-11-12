@@ -60,9 +60,11 @@ app.use('/', require('./routes//orderGraph'));
 app.use('/', require('./routes/exchange'));
 app.use('/', require('./routes/init_db'));
 app.use('/', require('./routes/payment'));
+app.use('/', require('./routes/users'));
+app.use('/', require('./routes/maps'));
 
 app.get('*', function (req, res) {
-    res.status(404).send('404 Page not found');
+    res.render('404.ejs')
 });
 
 //app.listen(process.env.PORT)

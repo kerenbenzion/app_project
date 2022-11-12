@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<title>BNK Jewlery</title>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" type="image/x-icon" href="../public/img/rsz_logotab.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../public/css/add_product.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/homepage.css" type="text/css">
+    <link rel="stylesheet" href="../public/css/footer_header.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="../public/scripts/add_product.js"></script>
+    <script src="../public/scripts/load_footer_header.js"></script>
+    <script src="../public/scripts/query_products.js"></script>
+
+
+
+</head>
+
+<body>
+
+    <%- include("./partials/header"); -%>
+
+        <div class="form-popup">
+            <form class="form-container">
+                <h1>הוספת מוצר</h1>
+                <p>בבקשה תמלא/י את המידע הבא כדי ליצור מוצר באתר</p>
+
+                <label for="name"><b>שם</b></label><br>
+                <input type="text" placeholder="שם המוצר" name="name" required>
+
+                <label for="price"><b>מחיר(₪)</b></label><br>
+                <input type="text" placeholder="מחיר" name="price" required><br>
+
+                <label for="type"><b>סוג</b></label><br>
+                <input type="text" placeholder="earrings/necklaces/bracelets/rings" name="type" required>
+
+                <label for="description"><b>תיאור</b></label><br>
+                <input type="text" placeholder="תיאור" name="description" required><br>
+
+                <label for="size"><b>מידה</b></label><br>
+                <input type="text" placeholder="S,M,L" name="size" required><br>
+
+                <label for="color"><b>צבע</b></label><br>
+                <input type="text" placeholder="color1,color2" name="color" required>
+
+                <label for="preview_img"><b>תמונה לתצוגה</b></label>
+                <input type="text" placeholder="url" name="preview_img" required>
+                <label for="hover_img"><b> תמונה לתצוגה נוספת</b></label>
+                <input type="text" placeholder="url" name="hover_img" required>
+
+                <button type="button" class="btn submit-button" onclick="additem()">אשר</button>
+            </form>
+        </div>
+
+        <div id="footer"></div>
+
+</body>
+
+
+</html>
