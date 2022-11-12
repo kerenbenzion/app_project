@@ -11,7 +11,6 @@ async function initdb(req, res) {
     await login_model.deleteMany({})
     await Branch.deleteMany({})
 
-
     createProduct(120, 'עגילי פרפר', ['gold'], 'https://giolli.co.il/wp-content/uploads/2020/05/5143.jpg', 'https://giolli.co.il/wp-content/uploads/2020/09/E11871G-1.jpg', 'earrings', 'עגילים יפייפים בצורת פרפר', ['S', 'M', 'L'])
     createProduct(125, 'עגילי חישוק פרפר', ['gold', 'silver'], 'https://shanijacobi.co.il/wp-content/uploads/2022/08/butterfly_earrings.jpg', 'https://shanijacobi.co.il/wp-content/uploads/2022/08/35.jpg', 'earrings', 'עגילי חישוק מהממים', ['S', 'M', 'L'])
     createProduct(200, 'עגילי גולייט', ['gold', 'silver'], 'https://shanijacobi.co.il/wp-content/uploads/2021/01/milan-earrings-set-silver-600x600.jpg', 'https://shanijacobi.co.il/wp-content/uploads/2020/10/juliat-600x600.jpg', 'earrings', 'סט עגילים ג’ולייט הוא סט היסטרי המורכב מחמישה עגילים שונים בשילוב פנינים טבעיות שמשדרגות כל הופעה!', ['S', 'M', 'L'])
@@ -82,6 +81,7 @@ async function initdb(req, res) {
         createorder(arr_products, date, user);
     }
 
+    orders = await Order.find({})
     createBranch('BNK Tel aviv', 'מנחם בגין 150 תל אביב')
     createBranch('BNK Ness Ziona', 'וייצמן 25 נס ציונה')
     createBranch('BNK Rehovot', 'קניון רחובות')
