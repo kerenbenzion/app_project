@@ -6,27 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
     integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="css/single-product.css"> -->
   <link rel="stylesheet" href="../public/css/single-product.css">
+  <link rel="stylesheet" href="../public/css/footer_header.css">
 
 </head>
 
 <body>  
-  <div class="row p-5">
+  <div class="row mb-5">
+    <%- include("./partials/header"); -%>
+  </div>
+  
+  <div class="row p-5 mt-5">
     <!-- swap images -->
-    <div id="myCarousel" class="carousel slide col-5" data-ride="carousel">
-      
-      <!-- errows buttons -->
-      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"
-        onclick="$('#myCarousel').carousel('prev')">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only"></span>
-      </a>
-      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"
-        onclick="$('#myCarousel').carousel('next')">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only"></span>
-      </a>
+    <div id="myCarousel" class="col-6" >
     </div>
 
     <!-- single product information -->
@@ -43,7 +35,7 @@
 
       <!-- Order information -->
       <div class="row pt-3">
-        <p class="col-2">בחירת מידה</p>
+        <p class="col-2">מידה</p>
         <select class="form-select col" aria-label="Default select example" id="size_option">
           <option selected>בחירת אפשרות</option>
           
@@ -145,6 +137,8 @@
     </div>
   </div>
 
+  <div id="footer"></div>
+
 
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -152,17 +146,10 @@
     integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
     crossorigin="anonymous"></script>
   <script src="../public/scripts/single-product.js"></script>
+  <script src="../public/scripts/load_footer_header.js"></script>
 
   <script type="text/html" id="imgs_template">
-    <div id="myCarousel" class="carousel slide col-5" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="active" src={preview_img}>
-        </div>
-        <div class="carousel-item">
-          <img class="" src={hover_img}>
-        </div>
-      </div>
+      <img  src={hover_img}>
   </script>
 
   <script type="text/html" id="product_info_template">
