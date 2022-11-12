@@ -1,8 +1,14 @@
-/* .carousel-inner{
-    position:relative !important;
-    width: 600px !important; 
-    height: 600px !important;
-} */
+@font-face {
+    font-family: varela_roundregular;
+    src: url('../fonts/VarelaRound-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: varela_roundregular;
+}
+
 
 .product-info{
     position: relative;
@@ -11,11 +17,6 @@
 .nav-link {
     color: black !important;
 }
-
-/* .carousel-item{
-    width: 600px !important;
-    height: 600px !important;
-} */
 
 #myCarousel img {
     width: 600px;
