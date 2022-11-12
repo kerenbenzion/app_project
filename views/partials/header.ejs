@@ -8,19 +8,16 @@
 <script src="../../public/scripts/load_footer_header.js"></script>
 
 <div class="header">
-
     <section>
-  <canvas id="headerCanvas" width="350" height="52" ></canvas>
-
-
+        <canvas id="headerCanvas" width="350" height="52"></canvas>
         <div id="optionsbar">
             <ul id="optionsmenu1">
-                <li><a class="btn btn-light" href="/payment">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-bag-fill" viewBox="0 0 16 16">
-                            <path
-                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
-                        </svg></a>
+                <li><a href="/payment"><button class="btn btn-light">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-bag-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                            </svg></button></a>
                 </li>
                 <li>
                     <% if(username!=null ) { %>
@@ -74,16 +71,17 @@
             </div>
 
 
-        <% if(username=='admin' ) { %>
-            <div class="dropdown">
-                <button class="dropbtn btn btn-light">פעולות מנהל</button>
-                <div class="dropdown-content">
-                    <a href="/graph">סטטיסטיקות</a>
-                    <a href="/users">ניהול משתמשים</a>
-                    <a href="/facebook">פרסם בפייסבוק</a>
-                    <a href="/products/add_product">הוספת מוצר</a>
-                </div>
-                <% } else { %>
+            <% if(username=='admin' ) { %>
+                <div class="dropdown">
+                    <button class="dropbtn btn btn-light">פעולות מנהל</button>
+                    <div class="dropdown-content">
+                        <a href="/graph">סטטיסטיקות</a>
+                        <a href="/users">ניהול משתמשים</a>
+                        <a href="/facebook">פרסם בפייסבוק</a>
+                        <a href="/products/add_product">הוספת מוצר</a>
+                        <a href="/order">ניהול הזמנות</a>
+                    </div>
+                    <% } else { %>
 
                         <%}%>
                 </div>
