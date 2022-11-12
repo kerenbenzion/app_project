@@ -47,7 +47,6 @@ $('.nav-item a').click(function (e) {
 function Validate_options() {
   var size_option = document.getElementById("color_option");
   var color_option = document.getElementById("size_option");
-  console.log(size_option.value)
   if (size_option.value == "בחירת אפשרות" || color_option.value == "בחירת אפשרות") {
       return false;
   }
