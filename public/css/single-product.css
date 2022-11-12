@@ -1,8 +1,8 @@
-.carousel-inner{
+/* .carousel-inner{
     position:relative !important;
     width: 600px !important; 
     height: 600px !important;
-}
+} */
 
 .product-info{
     position: relative;
@@ -12,8 +12,12 @@
     color: black !important;
 }
 
-.carousel-item{
+/* .carousel-item{
     width: 600px !important;
     height: 600px !important;
-}
+} */
 
+#myCarousel img {
+    width: 600px;
+    height: 600px;
+}
