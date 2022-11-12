@@ -6,28 +6,51 @@ async function getSingleProduct(id) {
 }
 
 async function getCategoryProducts(category, color, maxPrice) {
-    if (maxPrice != "all" && maxPrice !== undefined) {
+    //validation
+    const categories = ['all', 'rings', 'bracelets', 'necklaces', 'earrings'];
+    const colors = ['all', 'gold', 'silver'];
 
+    console.log(!isNaN(maxPrice));
+
+    const validMaxPrice = maxPrice == 'all' || (!isNaN(maxPrice) && maxPrice > 0);
+
+    if (!categories.includes(category) || !colors.includes(color) || !validMaxPrice) {
+        return;
+    }
+
+
+    //get the relevent products
+    if (maxPrice != "all" && maxPrice !== undefined) {
         if (color == "all" || color === undefined) {
-            returnedProducts = await Product.find({ type: category, price: { $lte: maxPrice } })
-            console.log(returnedProducts);
+            if (category == "all" || category === undefined)
+                return returnedProducts = await Product.find({ price: { $lte: maxPrice } });
+
             return returnedProducts = await Product.find({ type: category, price: { $lte: maxPrice } });
         }
         else {
+            if (category == "all" || category === undefined)
+                return returnedProducts = await Product.find({ color: color, price: { $lte: maxPrice } });
+
             return returnedProducts = await Product.find({ type: category, color: color, price: { $lte: maxPrice } });
         }
     }
 
     else {
+
         if (color == "all" || color === undefined) {
-            if(category = "all" || category === undefined)
+            if (category == "all" || category === undefined){
+                console.log(5)
                 return returnedProducts = await Product.find({});
-                
-            returnedProducts = await Product.find({ type: category })
-            console.log(returnedProducts);
+            }
+            console.log(6)
             return returnedProducts = await Product.find({ type: category });
         }
         else {
+            if (category == "all" || category === undefined){
+                console.log(7)
+                return returnedProducts = await Product.find({ color: color });
+            }
+            console.log(8)
             return returnedProducts = await Product.find({ type: category, color: color });
         }
     }
