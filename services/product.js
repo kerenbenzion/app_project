@@ -9,9 +9,6 @@ async function getCategoryProducts(category, color, maxPrice) {
     //validation
     const categories = ['all', 'rings', 'bracelets', 'necklaces', 'earrings'];
     const colors = ['all', 'gold', 'silver'];
-
-    console.log(!isNaN(maxPrice));
-
     const validMaxPrice = maxPrice == 'all' || (!isNaN(maxPrice) && maxPrice > 0);
 
     if (!categories.includes(category) || !colors.includes(color) || !validMaxPrice) {
@@ -39,18 +36,14 @@ async function getCategoryProducts(category, color, maxPrice) {
 
         if (color == "all" || color === undefined) {
             if (category == "all" || category === undefined){
-                console.log(5)
                 return returnedProducts = await Product.find({});
             }
-            console.log(6)
             return returnedProducts = await Product.find({ type: category });
         }
         else {
             if (category == "all" || category === undefined){
-                console.log(7)
                 return returnedProducts = await Product.find({ color: color });
             }
-            console.log(8)
             return returnedProducts = await Product.find({ type: category, color: color });
         }
     }

@@ -24,6 +24,18 @@
 
     <%- include("./partials/header"); -%>
 
+        <div class="tb-mobile-header-left" dir="rtl">
+            <form class="woocommerce-ordering" method="get">
+                <select name="orderby" class="orderby" aria-label="הזמנה בחנות" onchange="Sort(this.value)">
+                    <option value="all">מייני את כל המוצרים</option>
+                    <option value="name">למיין לפי שם</option>
+                    <option value="price">למיין מהזול ליקר</option>
+                    <option value="priceDesc">למיין מהיקר לזול</option>
+                </select>
+                <input type="hidden" name="paged" value="1">
+            </form>
+        </div>
+
         <div id="start">
             <div id="login_panel">
                 <div id="title">
@@ -50,40 +62,93 @@
                             <input type="number" placeholder="מחיר מקסימלי" name="maxPrice" id="inp_maxPrice"><br>
                             <!-- Types -->
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-earrings" value="earrings">
+                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-earrings"
+                                    value="earrings">
                                 <label class="form-check-label" for="inlineRadio-earrings">עגילים</label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-necklaces" value="necklaces">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-necklaces"
+                                    value="necklaces">
                                 <label class="form-check-label" for="inlineRadio-necklaces">שרשראות</label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-bracelets" value="bracelets">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-bracelets"
+                                    value="bracelets">
                                 <label class="form-check-label" for="inlineRadio-bracelets">צמידים</label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-rings" value="rings">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="category" id="inlineRadio-rings"
+                                    value="rings">
                                 <label class="form-check-label" for="inlineRadio-rings">טבעות</label>
-                              </div><br>
-                            
-                              <!-- Colors -->
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="color" id="inlineRadio-gold" value="gold">
+                            </div><br>
+
+                            <!-- Colors -->
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="color" id="inlineRadio-gold"
+                                    value="gold">
                                 <label class="form-check-label" for="inlineRadio-gold">זהב</label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="color" id="inlineRadio-silver" value="silver">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="color" id="inlineRadio-silver"
+                                    value="silver">
                                 <label class="form-check-label" for="inlineRadio-silver">כסף</label>
-                              </div>
-                              <br>
-                              <div id="error"></div>
+                            </div>
+                            <br>
+                            <div id="error"></div>
                             <!-- <button class="btn btn-dark" id="filter-btn" type="button">סינון</button> -->
                             <button class="btn btn-dark" id="filter-btn" onclick="validateBeforeSubmit()">סינון</button>
                         </div>
                     </div>
                 </div>
                 <div id="products">
-                    
+                    <%for (var i=0; i < products.length; i++) {%>
+                        <div class="box-image card">
+                            <button class="btn btn-submit delete" id="delete-product-btn" onclick="deleteItem(this)"
+                                product_id="<%=products[i]._id%>"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                </svg></button>
+                            <button class="btn btn-submit edit" id="edit-product-btn" onclick="openForm(this)"
+                                product_id="<%=products[i]._id%>"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                    height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                                </svg></button>
+                            <img class="card-img-top" src="<%=products[i].preview_img%>"
+                                onmouseover="this.src='<%=products[i].hover_img%>'"
+                                onmouseout="this.src='<%=products[i].preview_img%>'" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%=products[i].name%>
+                                </h5>
+                                <p class="card-text">
+                                    <%=products[i].price%>₪
+                                </p>
+                                <a href="#" class="choose btn btn-submit">בחרי אפשרויות</a>
+                                <a href="#" class="watch btn btn-submit" onclick="presentproduct(this)"
+                                    product_id="<%=products[i]._id%>">לתצוגה מהירה</a>
+                            </div>
+                            <div class="form-popup" id="myForm">
+                                <form class="form-container">
+                                    <h1>עריכה</h1>
+                                    <label for="name"><b>שם</b></label>
+                                    <input type="text" value="<%=products[i].name%>" name="name" required>
+                                    <label for="price"><b>מחיר בשקלים</b></label>
+                                    <input type="text" value="<%=products[i].price%>" name="price">
+                                    <label for="type"><b>סוג</b></label>
+                                    <input type="text" value="<%=products[i].type%>" name="type">
+                                    <label for="description"><b>תיאור</b></label>
+                                    <input type="text" value="<%=products[i].description%>" name="description">
+                                    <label for="size"><b>תיאור</b></label>
+                                    <input type="text" value="<%=products[i].size%>" name="size">
+                                    <button type="button" class="btn" onclick="edititem(this)" index="<%=i%>"
+                                        product_id="<%=products[i]._id%>">אשר</button>
+                                    <button type="button" class="btn cancel" onclick="closeForm(this)">סגור</button>
+                                </form>
+                            </div>
+                        </div>
+                    <%}%>
                 </div>
             </div>
         </div>
