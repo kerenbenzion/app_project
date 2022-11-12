@@ -8,3 +8,6 @@
     border-radius: 5px;
     text-shadow: 2px 2px gray;
   }
+  input[type=text] {
+    visibility: hidden;
+  }

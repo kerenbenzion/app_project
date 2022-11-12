@@ -87,15 +87,34 @@
 
                     <%}%>
         </div>
-        <div class="shopping-bag">
-        </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">שם מוצר</th>
+                <th scope="col">מחיר</th>
+                <th scope="col">תמונה</th>
 
+              </tr>
+            </thead>
+            <tbody class="shopping-bag">
+            <tfoot style="vertical-align:bottom">
+                <tr style="height:100px">
+                    <td>סהכ</td>
+                    <td id="total"></td>
+                    <td id="totalDollar"></td>
+                </tr>
+                </tfoot>
+            </tbody>
+          </table>
+ 
         <div class="total-bag">
             <button class="btn btn-light" onclick="dollarexchange()">המר לדולר</button>
-            <h5 id="total"></h5>
+            <h5 id="totalDollar"></h5>
         </div>
 
-        <form action="/payment" method="post">
+        <form action="/payment" method="post" class="products">
+            <input name="username" type="text" value="<%=username%>">
             <button type="submit" class="submit-button">סיום הזמנה</button>
         </form>
         <footer class="mcols bottom_footer">
