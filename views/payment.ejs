@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../public/css/payment.css" type="text/css">
     <link rel="stylesheet" href="../public/css/all_products.css" type="text/css">
     <link rel="stylesheet" href="../public/css/footer_header.css">
+    <script src="../public/scripts/query_products.js"></script>
 </head>
 
 <body>
@@ -42,6 +43,7 @@
 
         <form action="/payment" method="post" class="products">
             <input name="username" type="text" value="<%=username%>">
+            <input name="total" type="text" style="display: none;" id="total_hidden">
             <button type="submit" class="submit-button">סיום הזמנה</button>
         </form>
 
