@@ -1,9 +1,10 @@
 const Order = require("../models/Order");
-async function saveOrder(products, username) {
+async function saveOrder(products, username, total) {
     const newOrder = new Order({
         products,
         username: username,
-        date: Date.now()
+        date: Date.now(),
+        total: total
     });
 
     const savedRes = await newOrder.save()

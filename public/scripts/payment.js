@@ -14,6 +14,8 @@ $(".products").append('<input name="products" type="text" class="products" value
 var total = document.getElementById("total");
 total.innerHTML = total_price + "₪"
 
+var total = document.getElementById("total_hidden");
+total.value = total_price
 
 function dollarexchange() {
     var settings = {

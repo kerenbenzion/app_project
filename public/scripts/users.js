@@ -51,8 +51,6 @@ function openFormedit() {
         document.getElementsByName('address')[0].value = res['Address']
         document.getElementsByName('phonenumber')[0].value = res['phonenumber']
     })
-
-
 }
 function edititem() {
     let username = document.getElementsByName('username_edit')[0].value

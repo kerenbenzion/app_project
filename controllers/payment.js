@@ -8,29 +8,29 @@ function getpaymentpage(req, res) {
 }
 
 async function finishPayment(req, res) {
-    const { products, username } = req.body
+    const { products, username, total } = req.body
     let splited_products = []
     console.log(products)
-    if (products.includes(',')){
+    if (products.includes(',')) {
         console.log("hello")
         splited_products = products.split(',')
     }
-    else{
+    else {
         splited_products = [products]
     }
     let products_arr = []
-    for (var i = 0; i < splited_products.length; i++){
+    for (var i = 0; i < splited_products.length; i++) {
         products_arr.push(splited_products[i])
     }
-    const result = await paymentService.saveOrder(products_arr, username)
+    const result = await paymentService.saveOrder(products_arr, username, total)
 
     if (result) {
-      req.session.username = username
-      res.render('../views/finishPayment', { orderNumber: result });
+        req.session.username = username
+        res.render('../views/finishPayment', { orderNumber: result });
     }
     else
-      res.redirect('/login?error=1')
-  }
+        res.redirect('/login?error=1')
+}
 
 module.exports = {
     getpaymentpage, finishPayment

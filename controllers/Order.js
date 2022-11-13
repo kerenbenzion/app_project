@@ -55,7 +55,7 @@ function getByname(req, res) {
 
 
 function updatebyid(req, res) {
-    Product.findByIdAndUpdate(req.params.id, { "username": req.body.username, "products": req.body.products },
+    Order.findByIdAndUpdate(req.params.id, req.body,
         function (err, r) {
             if (err) {
                 res.status(400).send(err);
@@ -63,6 +63,7 @@ function updatebyid(req, res) {
                 res.status(200).send(r);
             }
         });
+
 }
 
 function deleteorder(req, res) {

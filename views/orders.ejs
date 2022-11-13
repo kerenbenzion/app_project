@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../public/css/orders.css" type="text/css">
     <link rel="stylesheet" href="../public/css/footer_header.css">
     <script src="../public/scripts/query_products.js"></script>
+    <script src="../public/scripts/orders.js"></script>
 
 </head>
 
@@ -30,23 +31,18 @@
                 <form class="form-container">
                     <h1>עריכה</h1>
 
-                    <label for="name"><b>שם</b></label>
+                    <label for="name"><b>מספר הזמנה</b></label>
                     <input type="text" value="" name="name" readonly>
-                    <label for="address"><b>כתובת</b></label>
+                    <label for="address"><b>סכום הזמנה</b></label>
                     <input type="text" value="" name="address">
-                    <label for="phonenumber"><b>מספר טלפון</b></label>
-                    <input type="text" value="" name="phonenumber">
-
                     <button type="button" class="btn" onclick="edititem()">אשר</button>
                     <button type="button" class="btn cancel" onclick="closeFormedit()">סגור</button>
                 </form>
             </div>
-            <button onclick="presentuserlist()" class="btn btn-light present">
+            <button id="orderlist" onclick="presentuserlist()" class="btn btn-light present">
                 הצג רשימת הזמנות
             </button>
-            <button onclick="removeuserlist()" class="btn btn-light notpresent" style="display: none;">
-                הפסק להציג רשימת הזמנות
-            </button>
+
             <div class="users_list">
                 <table class="table">
                     <thead>
@@ -54,6 +50,7 @@
                             <th scope="col">מספר הזמנה</th>
                             <th scope="col">משתמש</th>
                             <th scope="col">תאריך</th>
+                            <th scope="col">סכום כולל</th>
                         </tr>
                     </thead>
                     <tbody class="shopping-bag">
@@ -71,7 +68,7 @@
 
         <div id="footer"></div>
 </body>
-<script src="../public/scripts/orders.js"></script>
+
 <script src="../public/scripts/load_footer_header.js"></script>
 
 </html>

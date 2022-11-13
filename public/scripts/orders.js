@@ -1,4 +1,3 @@
-
 function presentuserlist() {
     $(".shopping-bag").innerHTML = ''
     var settings = {
@@ -10,29 +9,21 @@ function presentuserlist() {
     $.ajax(settings).done(function (response) {
         // document.getElementsByClassName('users_list')[0].innerHTML = ''
         for (var id in response) {
-            console.log(id)
             var settings2 = {
                 "url": "http://localhost:3001/order/" + response[id]['_id'],
                 "method": "GET",
                 "timeout": 0,
             };
             $.ajax(settings2).done(function (response1) {
-                $(".shopping-bag").append('<tr><th scope="row">' + response1['_id'] + '</td><td>' + response1['username'] + '</td><td>' + response1['date'] + '</td><td></th></tr>');
+                $(".shopping-bag").append('<tr><th scope="row">' + response1['_id'] + '</td><td>' + response1['username'] + '</td><td>' + response1['date'] + '</td><td>' + response1['total'] + '</td><td></th></tr>');
             })
 
             // document.getElementsByClassName('users_list')[0].innerHTML += "<li> " + response[id]['_id'] + '<\li>'
         }
     });
-    // document.getElementsByClassName('notpresent')[0].style = 'display:block'
-    // document.getElementsByClassName('present')[0].style = 'display:none;'
+    document.getElementById('orderlist').setAttribute('disabled', 'disabled');
 }
 
-function removeuserlist() {
-    document.getElementsByClassName('users_list')[0].innerHTML = ""
-    document.getElementsByClassName('notpresent')[0].style = 'display:none'
-    document.getElementsByClassName('present')[0].style = 'display:block;'
-
-}
 function deleteuser() {
     let username = document.getElementsByName('username')[0].value
     let url = "http://localhost:3001/order/" + username
@@ -52,25 +43,23 @@ function deleteuser() {
 
 function openFormedit() {
     var username = document.getElementsByName('username_edit')[0].value
-    let url = "http://localhost:3001/users/" + username
+    console.log(username)
+    let url = "http://localhost:3001/order/" + username
+    console.log(url)
     document.getElementsByName('name')[0].value = username
     document.getElementsByClassName("form-popup")[0].style.display = "block"
     $.ajax({
-        url: url
-    }).done(function (res) {
-        console.log(res)
-        document.getElementsByName('address')[0].value = res['Address']
-        document.getElementsByName('phonenumber')[0].value = res['phonenumber']
+        url: url,
+        type: 'GET'
+    }).done(function (resu) {
+        console.log(resu)
+        document.getElementsByName('address')[0].value = resu['total']
     })
-
-
 }
 function edititem() {
-    let username = document.getElementsByName('username_edit')[0].value
-    let new_username = document.getElementsByName('name')[0].value
-    let new_address = document.getElementsByName('address')[0].value
-    let new_phone = document.getElementsByName('phonenumber')[0].value
-    let url = "http://localhost:3001/users/" + username
+    let id = document.getElementsByName('username_edit')[0].value
+    let price = document.getElementsByName('address')[0].value
+    let url = "http://localhost:3001/order/" + id
 
     $.ajax({
         url: url,
@@ -79,7 +68,7 @@ function edititem() {
             // alert(JSON.stringify(res));
         },
         error: function () {
-            alert("user does not exist")
+            alert("order does not exist")
         }
     });
     var settings = {
@@ -90,9 +79,8 @@ function edititem() {
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-            "Address": new_address,
-            "phonenumber": new_phone,
-            "_id": new_username
+            "total": price,
+            "_id": id
         }),
     };
 
