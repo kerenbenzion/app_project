@@ -21,6 +21,18 @@ function get_orders(req, res) {
         res.json(results)
     });
 }
+function getorder(req, res) {
+    let id = req.params.id
+    Order.findById(id, function (err, response) {
+        console.log(response)
+        if (response != null) {
+            res.status(200).json(response)
+        }
+        else {
+            res.status(400).send("order not found in db")
+        }
+    })
+}
 function getorderspage(req, res) {
     res.render('../views/orders.ejs', { username: req.session.username });
 }
@@ -73,5 +85,6 @@ module.exports = {
     deletebyusername,
     updatebyid,
     getorderspage,
-    deleteorder
+    deleteorder,
+    getorder
 }

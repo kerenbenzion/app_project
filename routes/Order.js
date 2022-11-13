@@ -7,6 +7,7 @@ router.delete('/order/deletebyusername/:name', order.deletebyusername);
 router.put('/order/updatebyid/:id', order.updatebyid);
 router.get('/order', order.getorderspage);
 router.get('/order/getorders', order.get_orders);
+router.get('/order/:id', order.getorder);
 
 router.delete('/order/:id', order.deleteorder);
 

@@ -67,21 +67,24 @@ async function initdb(req, res) {
     login.register('user9', '1234', '0525341648', 'יהודית 18 תל אביב', 'no')
     login.register('admin', '1234', '0525341648', 'יהודית 18 תל אביב', 'yes')
 
+    // var results = await Product.find({}, { "_id": 1 })
     var results = await Product.find({}, { "_id": 1 })
+    console.log(results)
     for (let num_orders = 0; num_orders < 10; num_orders++) {
         var arr_products = []
         var date = randomDate(new Date(2022, 0, 1), new Date());
         //var date = new Date();
-        console.log(date)
+        // console.log(date)
         var user = "user" + (Math.floor(Math.random() * 9) + 1);
         for (let i = 0; i < 5; i++) {
             var product_num = Math.floor(Math.random() * 40);
             arr_products.push(results[product_num])
         }
+        // console.log(arr_products)
         createorder(arr_products, date, user);
     }
 
-    orders = await Order.find({})
+    // orders = await Order.find({})
     createBranch('BNK Tel aviv', 'מנחם בגין 150 תל אביב')
     createBranch('BNK Ness Ziona', 'וייצמן 25 נס ציונה')
     createBranch('BNK Rehovot', 'קניון רחובות')

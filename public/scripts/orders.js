@@ -1,5 +1,6 @@
 
 function presentuserlist() {
+    $(".shopping-bag").innerHTML = ''
     var settings = {
         "url": "http://localhost:3001/order/getorders",
         "method": "GET",
@@ -7,13 +8,23 @@ function presentuserlist() {
     };
 
     $.ajax(settings).done(function (response) {
-        document.getElementsByClassName('users_list')[0].innerHTML = ''
+        // document.getElementsByClassName('users_list')[0].innerHTML = ''
         for (var id in response) {
-            document.getElementsByClassName('users_list')[0].innerHTML += "<li> " + response[id]['_id'] + '<\li>'
+            console.log(id)
+            var settings2 = {
+                "url": "http://localhost:3001/order/" + response[id]['_id'],
+                "method": "GET",
+                "timeout": 0,
+            };
+            $.ajax(settings2).done(function (response1) {
+                $(".shopping-bag").append('<tr><th scope="row">' + response1['_id'] + '</td><td>' + response1['username'] + '</td><td>' + response1['date'] + '</td><td></th></tr>');
+            })
+
+            // document.getElementsByClassName('users_list')[0].innerHTML += "<li> " + response[id]['_id'] + '<\li>'
         }
     });
-    document.getElementsByClassName('notpresent')[0].style = 'display:block'
-    document.getElementsByClassName('present')[0].style = 'display:none;'
+    // document.getElementsByClassName('notpresent')[0].style = 'display:block'
+    // document.getElementsByClassName('present')[0].style = 'display:none;'
 }
 
 function removeuserlist() {

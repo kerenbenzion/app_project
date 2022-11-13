@@ -21,15 +21,6 @@
     <%- include("./partials/header"); -%>
 
         <div class="users">
-            <button onclick="presentuserlist()" class="btn btn-light present">
-                הצג רשימת הזמנות
-            </button>
-            <button onclick="removeuserlist()" class="btn btn-light notpresent" style="display: none;">
-                הפסק להציג רשימת הזמנות
-            </button>
-            <div class="users_list">
-            </div>
-
             <button onclick="deleteuser()" class="btn btn-light delete">מחק הזמנה</button><br>
             <input type="username" name="username" placeholder="order id"><br>
 
@@ -50,6 +41,27 @@
                     <button type="button" class="btn cancel" onclick="closeFormedit()">סגור</button>
                 </form>
             </div>
+            <button onclick="presentuserlist()" class="btn btn-light present">
+                הצג רשימת הזמנות
+            </button>
+            <button onclick="removeuserlist()" class="btn btn-light notpresent" style="display: none;">
+                הפסק להציג רשימת הזמנות
+            </button>
+            <div class="users_list">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">מספר הזמנה</th>
+                            <th scope="col">משתמש</th>
+                            <th scope="col">תאריך</th>
+                        </tr>
+                    </thead>
+                    <tbody class="shopping-bag">
+                    </tbody>
+                </table>
+            </div>
+
+
 
 
             <div class="list">

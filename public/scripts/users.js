@@ -88,6 +88,7 @@ function edititem() {
     $.ajax(settings).done(function (response) {
         console.log(response);
     });
+    closeFormedit();
 
 }
 function closeFormedit() {
