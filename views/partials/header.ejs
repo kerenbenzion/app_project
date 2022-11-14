@@ -25,6 +25,8 @@
                 <li>
                     <% if(username!=null ) { %>
                         <button class="btn btn-light">שלום <%=username%></button>
+                        <a href="/logout" class="btn btn-light">התנתק/י</a>
+
                         <% } else { %>
                             <button class="btn btn-light" onclick="openLogin()">התחבר/י</button>
                             <%}%>

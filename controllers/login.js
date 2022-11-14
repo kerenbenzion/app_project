@@ -17,7 +17,7 @@ function registerForm(req, res) { res.render("register", {}) }
 
 function logout(req, res) {
   req.session.destroy(() => {
-    res.redirect('/login');
+    res.redirect('/products');
   });
 }
 
