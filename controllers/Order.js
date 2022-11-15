@@ -34,7 +34,12 @@ function getorder(req, res) {
     })
 }
 function getorderspage(req, res) {
-    res.render('../views/orders.ejs', { username: req.session.username });
+    if (req.session.username != "admin") {
+        res.render('../views/404.ejs')
+    } else {
+        res.render('../views/orders.ejs', { username: req.session.username });
+    }
+
 }
 function deletebyusername(req, res) {
     Order.findOne({

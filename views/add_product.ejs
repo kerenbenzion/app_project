@@ -40,16 +40,33 @@
                 <input type="text" placeholder="מחיר" name="price" required><br>
 
                 <label for="type"><b>סוג</b></label><br>
-                <input type="text" placeholder="earrings/necklaces/bracelets/rings" name="type" required>
+                <select class="type" id="type" name="type">
+                    <option value="earrings">earrings</option>
+                    <option value="necklaces">necklaces</option>
+                    <option value="rings">rings</option>
+                    <option value="bracelets">bracelets</option>
+                </select>
 
                 <label for="description"><b>תיאור</b></label><br>
                 <input type="text" placeholder="תיאור" name="description" required><br>
 
-                <label for="size"><b>מידה</b></label><br>
-                <input type="text" placeholder="S,M,L" name="size" required><br>
+                <input class="form-check-input" type="checkbox" name="category" id="checkbox-size" value="XS">
+                <label class="form-check-label" for="inlineRadio-earrings">XS</label>
+                <input class="form-check-input" type="checkbox" name="category" id="checkbox-size" value="S">
+                <label class="form-check-label" for="inlineRadio-earrings">S</label>
+                <input class="form-check-input" type="checkbox" name="category" id="checkbox-size" value="M">
+                <label class="form-check-label" for="inlineRadio-earrings">M</label>
+                <input class="form-check-input" type="checkbox" name="category" id="checkbox-size" value="L">
+                <label class="form-check-label" for="inlineRadio-earrings">L</label>
 
                 <label for="color"><b>צבע</b></label><br>
-                <input type="text" placeholder="color1,color2" name="color" required>
+                <input class="form-check-input" type="checkbox" name="color" id="checkbox-color" value="silver">
+                <label class="form-check-label" for="inlineRadio-earrings">silver</label>
+                <input class="form-check-input" type="checkbox" name="color" id="checkbox-color" value="gold">
+                <label class="form-check-label" for="inlineRadio-earrings">gold</label>
+
+                <!-- <input type="text" placeholder="color1,color2" name="color" required> -->
+
 
                 <label for="preview_img"><b>תמונה לתצוגה</b></label>
                 <input type="text" placeholder="url" name="preview_img" required>

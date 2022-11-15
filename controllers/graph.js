@@ -7,7 +7,7 @@ async function getMaxOrder(req, res) {
 
     console.log(maxOrderResult)
     if (req.session.username != "admin") {
-        res.status(404).send("page does not exists")
+        res.render('../views/404.ejs')
     } else {
         res.render('../views/graphs', { maxOrder: maxOrderResult, username: req.session.username });
     }
