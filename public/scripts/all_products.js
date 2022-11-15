@@ -140,7 +140,7 @@ function productCategory(category, color, maxPrice) {
   productCategoryAjax(queryParams);
 }
 
-function productCategoryAjax(queryParams){
+function productCategoryAjax(queryParams) {
   $.ajax({
     url: '/info' + queryParams
   }).done(function (res) {

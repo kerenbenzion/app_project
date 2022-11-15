@@ -12,6 +12,17 @@ body {
   text-align: center;
 }
 
+.form-check-input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.type {
+  margin-left: auto;
+  display: block;
+  margin-right: auto;
+}
+
 .form-popup {
   margin: 0 auto;
   width: 250px;
