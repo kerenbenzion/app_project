@@ -24,12 +24,12 @@ async function finishPayment(req, res) {
     }
     const result = await paymentService.saveOrder(products_arr, username, total)
 
-    if (result) {
+    if (result != null) {
         req.session.username = username
         res.render('../views/finishPayment', { orderNumber: result });
     }
     else
-        res.redirect('/login?error=1')
+        res.redirect('/login')
 }
 
 module.exports = {
