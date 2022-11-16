@@ -25,12 +25,12 @@ async function login(req, res) {
   const { username, password } = req.body
 
   const result = await loginService.login(username, password)
-  if (result) {
+  if (result != null) {
     req.session.username = username
     res.redirect('/')
   }
   else
-    res.redirect('/login?error=1')
+    res.redirect('/login')
 }
 
 async function register(req, res) {
