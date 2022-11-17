@@ -64,7 +64,6 @@ function additem(d) {
 
   $.ajax(settings).done(function (response) {
     console.log(response);
-    window.location.href = "/products"
   });
   closeFormAdd();
 }
@@ -79,21 +78,36 @@ function edititem(d) {
   var name = document.getElementsByName('name')[index].value
   var type = document.getElementsByName('type')[index].value
   var price = document.getElementsByName('price')[index].value
-  var data = {
-    "name": name,
-    "description": description,
-    "size": size,
-    "type": type,
-    "price": price
-  }
-  $.ajax({
-    url: urlCall,
-    type: 'PUT',
-    data: data,
-    success: function (result) {
-      window.location.href = "/products";
+  if (description == '') {
+    alert('יש להכניס תיאור')
+  } else if (name == '') {
+    alert('יש להכניס שם')
+  } else if (type == '') {
+    alert('יש להכניס סוג')
+  } else if (price == '') {
+    alert('לא הכנסת מחיר')
+  } else if (isNaN(price)) {
+    alert('מחיר חייב להיות מספר')
+  } else if (size == '') {
+    alert('לא הכנסת מידר')
+  } else {
+    var data = {
+      "name": name,
+      "description": description,
+      "size": size,
+      "type": type,
+      "price": price
     }
-  });
+    $.ajax({
+      url: urlCall,
+      type: 'PUT',
+      data: data,
+      success: function (result) {
+        window.location.href = "/products";
+      }
+    });
+  }
+
 }
 function closeForm(d) {
   let all_popups = document.getElementsByClassName('form-popup')
@@ -152,7 +166,7 @@ function productCategoryAjax(queryParams) {
       for (const key in element) {
         search_template = search_template.replaceAll('{' + key + '}', element[key]);
       }
-
+      search_template = search_template.replace('{index}', index);
       $('#products').append(search_template);
     }
   })
