@@ -64,7 +64,6 @@ function additem(d) {
 
   $.ajax(settings).done(function (response) {
     console.log(response);
-    window.location.href = "/products"
   });
   closeFormAdd();
 }
@@ -167,7 +166,7 @@ function productCategoryAjax(queryParams) {
       for (const key in element) {
         search_template = search_template.replaceAll('{' + key + '}', element[key]);
       }
-
+      search_template = search_template.replace('{index}', index);
       $('#products').append(search_template);
     }
   })
