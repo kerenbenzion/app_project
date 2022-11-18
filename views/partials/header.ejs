@@ -32,6 +32,9 @@
                     <div class="logo"><a href="/"><img src="../public/logo.png"
                                 style="height: 2.2cm; width: 2cm;margin-left: 19cm; margin-right: 19cm;"></a></div>
                 </li>
+                <li>
+                    <div id=userNum class=userNum></div>
+                 </li>
             </ul>
         </div>
 
@@ -99,3 +102,19 @@
 <div class="row">&nbsp</div>
 <div class="row">&nbsp</div>
 <div class="row">&nbsp</div>
+
+<script>
+    var connection = new WebSocket('ws://127.0.0.1:3001');
+    var users = localStorage.getItem("usersCounter")
+    connection.onopen = function () {
+        console.log('connection is open');
+
+    };
+    connection.onerror = function (error) {
+        console.log('connection error');
+    };
+    connection.onmessage = function (message) {
+        console.log(message.data);
+        $('.userNum').text("מספר חלונות פתוחים: " + message.data);
+    };
+</script>

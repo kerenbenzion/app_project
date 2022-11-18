@@ -97,3 +97,7 @@ body {
 .dropdown:hover .dropbtn {
     background-color: #efeae6;
 }
+#userNum{
+    direction: rtl;
+    display: inline;
+}
