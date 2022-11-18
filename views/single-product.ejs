@@ -8,13 +8,12 @@
     integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
   <link rel="stylesheet" href="../public/css/single-product.css">
   <link rel="stylesheet" href="../public/css/footer_header.css">
-
+  <script src="../public/scripts/load_footer_header.js"></script>
+  <script src="../public/scripts/query_products.js"></script>
 </head>
 
 <body>  
-  <div class="row mb-5">
     <%- include("./partials/header"); -%>
-  </div>
   
   <div class="row p-5 mt-5">
     <!-- swap images -->
@@ -145,8 +144,6 @@
     integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
     crossorigin="anonymous"></script>
   <script src="../public/scripts/single-product.js"></script>
-  <script src="../public/scripts/load_footer_header.js"></script>
-  <script src="../public/scripts/query_products.js"></script>
 
   <script type="text/html" id="imgs_template">
       <img  src={hover_img}>
